@@ -8,7 +8,7 @@ const add = async (tableName, entity) => {
         const result = await object.save();
         return result;
     } catch (err) {
-        return err;
+        console.log(err);
     }
 };
 
@@ -18,7 +18,7 @@ const getAll = async tableName => {
         const result = await Model.find();
         return result;
     } catch (err) {
-        return err;
+        console.log(err);
     }
 }
 
@@ -29,7 +29,7 @@ const getOne = async (tableName, fieldName, fieldValue) => {
         const result = await Model.findOne(filter);
         return result;
     } catch (err) {
-        return err;
+        console.log(err);
     }
 }
 
@@ -40,7 +40,7 @@ const updateOne = async (tableName, fieldName, fieldValue, newEntity) => {
         const result = await Model.findOneAndUpdate(filter, newEntity);
         return result;
     } catch (err) {
-        return err;
+        console.log(err);
     }
 };
 
@@ -51,7 +51,7 @@ const deleteOne = async (tableName, fieldName, fieldValue) => {
         const result = await Model.findOneAndDelete(filter);
         return result;
     } catch (err) {
-        return err;
+        console.log(err);
     }
 };
 
