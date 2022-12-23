@@ -1,0 +1,24 @@
+:root {
+    --text-primary: #41AFFE;
+    --text-secondary: #837272;
+    --text-content: #000000cc;
+    --text-white: #FFFFFF;
+    --text-success: #2AC039;
+    --text-info: #1f5881;
+    --text-dark: #000000;
+
+    --main-bg-color: #EBF5F2;
+    --footer-bg-color: #46487ce3;
+    --box-color: #FFFFFF;
+    --header-white: #FFFFFF;
+    --secondary-bg: #DDEBE7;
+    --homepage-addition-bg: #2e170340; 
+
+    --border: solid 1px rgba(0, 0, 0, 0.102);
+
+    --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --text-shadow-normal: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    --text-hover-shadow: 0px 4px 4px rgba(110, 243, 241, 0.892);
+
+    --login-signup-button: linear-gradient(75.24deg, rgba(0, 56, 255, 0.72) -14.59%, rgba(36, 10, 120, 0.84) 116.8%);
+}
