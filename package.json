@@ -1,0 +1,30 @@
+{
+  "name": "gosomeone-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoangSon-123/Gosomeone-Project.git"
+  },
+  "author": "Nhom 21",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HoangSon-123/Gosomeone-Project/issues"
+  },
+  "homepage": "https://github.com/HoangSon-123/Gosomeone-Project#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
