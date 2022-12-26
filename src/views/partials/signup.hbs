@@ -1,10 +1,10 @@
-<div class="container-fluid p-5 h-100 wrapper">
+<div class="container-fluid p-5 h-100 wrapper d-none" id="signupForm"> 
     <div class="container-sm p-4 login-signup-form">
         <h5 class="mb-4"><b>Sign up</b></h5>
         <button id="google-signup" class="btn border"><i class="fa-brands fa-google float-start"></i>Continue
             with Google</button>
         <h6><i>- or -</i></h6>
-        <form>
+        <form action="/auth/signup" method="post">
             <div class="form-floating">
                 <input type="text" class="form-control" id="firstname" name="firstname" required>
                 <label for="firstname">First name</label>
@@ -32,6 +32,14 @@
             <button class="btn w-100" type="submit">CONTINUE</button>
         </form>
         <hr>
-        <span><i>Already have had an account? <a href="#">Login</a></i></span>
+        <span><i>Already have had an account? <a class="login-btn btn btn-primary w-100 rounded-1" id="loginFromSignup">Login</a></i></span>
     </div>
 </div>
+
+<script>
+    document.getElementById("loginFromSignup")
+        .addEventListener('click', function (event) {
+            document.getElementById("signupForm").classList.add('d-none');
+            document.getElementById("loginForm").classList.remove('d-none');
+        });
+</script>

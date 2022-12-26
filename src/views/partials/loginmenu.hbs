@@ -1,5 +1,23 @@
-<div class="login-menu p-5 d-none">
-    <a class="login-btn btn btn-primary w-100 rounded-1">LOG IN</a>
+<div class="login-menu p-5 d-none" id="loginmenu">
+    <a class="login-btn btn btn-primary w-100 rounded-1" id="loginFromLoginmenu">LOG IN</a>
     <span class="text-small"><small>Or still need to join?</small></span>
-    <a class="signup-btn btn btn-outline-secondary w-100 rounded-1">SIGN UP</a>
+    <a class="signup-btn btn btn-outline-secondary w-100 rounded-1" id="signupFromLoginmenu">SIGN UP</a>
 </div>
+
+
+<script>
+    document.getElementById("loginmenu")
+        .addEventListener('click', function (event) {
+            document.getElementById("loginmenu").classList.add('d-none');
+        });
+
+    document.getElementById("loginFromLoginmenu")
+        .addEventListener('click', function (event) {
+            document.getElementById("loginForm").classList.remove('d-none');
+        });
+
+    document.getElementById("signupFromLoginmenu")
+        .addEventListener('click', function (event) {
+            document.getElementById("signupForm").classList.remove('d-none');
+        });
+</script>

@@ -13,7 +13,20 @@
             <div class="navbar-menu-item">
                 <a class="text" href="#">how it works</a>
             </div>
-            <img class="user-icon" src="/assets/images/user.png">
+            <button id="usericon">
+                <img class="user-icon" src="/assets/images/user.png">
+            </button>
+            {{>loginmenu}}
+            {{>login}}
+            {{>signup}}
         </div>
     </div>
 </header>
+
+<script>
+    document.getElementById("usericon")
+        .addEventListener('click', function (event) {
+            console.log(1);
+            document.getElementById("loginmenu").classList.remove('d-none');
+        });
+</script>
