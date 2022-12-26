@@ -258,12 +258,34 @@
 .login-menu {
     position: absolute;
     top: 90px;
-    right: 10%;
-    width: 290px;
+    right: 5%;
+    width: 320px;
     height: 234px;
     background: var(--box-color);
     box-shadow: var(--box-shadow);
     border-radius: 5px;
+}
+
+#loginForm {
+    position: absolute;
+    top: 90px;
+    right: 5%;
+    width: 320px;
+    background: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+#signupForm {
+    position: absolute;
+    top: 90px;
+    right: 5%;
+    width: 320px;
+    background: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    z-index: 1;
 }
 
 .main {
