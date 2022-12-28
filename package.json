@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/HoangSon-123/Gosomeone-Project#readme",
   "dependencies": {
-    "bcrypt": "^5.1.0",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "mongoose": "^6.8.1"
