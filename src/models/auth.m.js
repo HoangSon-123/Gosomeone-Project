@@ -1,6 +1,6 @@
 //demo
 const db = require('./db');
-const tableName="user";
+const tableName= "User";
 
 module.exports = {
     all: async () => {

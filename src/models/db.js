@@ -4,9 +4,8 @@ const mongoose = require("mongoose");
 
 const add = async (tableName, entity) => {
     try {
-        // Model = mongoose.model(tableName,schema);
         console.log(entity);
-        Model = mongoose.model(tableName,userSchema);
+        Model = mongoose.model(tableName);
         const object = new Model(entity);
         const result = await object.save();
         return result;

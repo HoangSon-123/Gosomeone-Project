@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
 // Dùng file .env
-dotenv.config();
+dotenv.config({ path: __dirname + '/.env' });
 
 // Connect Database
 mongoose.set('strictQuery', false);

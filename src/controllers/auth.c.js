@@ -8,12 +8,12 @@ exports.formRegister = async (req, res, next) => {
         const pw = req.body.password
         const pwHashed = await bcrypt.hash(pw, saltRounds);
         const u = {
-            Firstname: req.body.firstname,
-            Lastname: req.body.lastname,
-            DOB: req.body.dob,
-            Email: req.body.email,
-            Username: req.body.username,
-            Password: pwHashed
+            first_name: req.body.firstname,
+            last_name: req.body.lastname,
+            dob: req.body.dob,
+            email: req.body.email,
+            username: req.body.username,
+            password: pwHashed
         }
         const uN = await userM.add(u)
         res.redirect('/')
