@@ -2,6 +2,17 @@ const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+
+// Dùng file .env
+dotenv.config();
+
+// Connect Database
+mongoose.set('strictQuery', false);
+mongoose.connect((process.env.MONGODB_URL), () => {
+    console.log("Đã kết nối đến MongoDB");
+});
 
 const app = express();
 const port = 3000;

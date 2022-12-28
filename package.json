@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/HoangSon-123/Gosomeone-Project#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "express-handlebars": "^6.0.6"
+    "express-handlebars": "^6.0.6",
+    "mongoose": "^6.8.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
