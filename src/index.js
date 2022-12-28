@@ -4,6 +4,7 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const session = require('express-session');
 
 // Dùng file .env
 dotenv.config({ path: __dirname + '/.env' });
@@ -27,6 +28,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('hbs', handlebars.engine({extname: 'hbs'}));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
+
+// add session
+app.use(session({
+    secret: 'gso',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}))
 
 app.use('/auth',authR);
 

@@ -12,7 +12,7 @@ module.exports = {
         return rs;
     },
     byName: async un =>{
-        const rs=await db.select("*",tableName,"f_Username",un);
+        const rs=await db.getOne(tableName,"username",un);
         return rs;
     }
 

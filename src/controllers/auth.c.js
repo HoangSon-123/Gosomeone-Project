@@ -23,6 +23,34 @@ exports.formRegister = async (req, res, next) => {
     }
 }
 
+exports.formLogin = async (req, res, next) => {
+    try {
+        const un = req.body.username;
+        const pw = req.body.password;
+
+        const user = await userM.byName(un);
+        if (!user) {
+            console.error("Không tìm thấy người dùng");
+            return res.redirect('/');
+        }
+
+        const match = await bcrypt.compare(pw, user.password);
+
+        if (!match) {
+            console.error("Sai mật khẩu");
+            return res.redirect('/');
+        }
+        else {
+            // Đăng nhập
+            req.session.username = user.username;
+            res.redirect('/');
+        }
+
+    } catch (error) {
+        next(error);
+    }
+}
+
 // exports.postLogout = async (req, res, next) => {
 //     try {
 //         if (req.isAuthenticated()) {
