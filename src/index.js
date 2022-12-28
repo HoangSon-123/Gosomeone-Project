@@ -40,7 +40,10 @@ app.use(session({
 app.use('/auth',authR);
 
 app.get('/', (req, res) => {
-    res.render('home');
+    console.log(req.session.username)
+    res.render('home', {
+        username: req.session.username
+    });
 });
 
 app.listen(port, () => {
