@@ -4,13 +4,13 @@
         <button id="google-login" class="btn border"><i class="fa-brands fa-google float-start"></i>Continue
             with Google</button>
         <h6><i>- or -</i></h6>
-        <form>
+        <form action="/auth/login" method="post">
             <div class="w-100 input">
-                <input type="text" name="username" placeholder="Username or Email">
+                <input type="text" name="username" placeholder="Username or Email" required>
                 <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="w-100 input">
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Password" required>
                 <i class="fa-solid fa-lock"></i>
             </div>
             <button class="btn btn-primary w-100 rounded-1" type="submit">LOG IN</button>

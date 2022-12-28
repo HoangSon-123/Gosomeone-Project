@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
+
+
 // Dùng file .env
 dotenv.config({ path: __dirname + '/.env' });
 
@@ -19,6 +21,9 @@ const authR=require('./routers/auth.r');
 const app = express();
 const port = 3000;
 const localhost = '127.0.0.1';
+
+//Set up session
+require('./config/session')(app)
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
