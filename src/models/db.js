@@ -1,9 +1,22 @@
-require("../configs/collections");
+require("../config/db/collections");
 const mongoose = require("mongoose");
+const schema="gosomeone";
+mongoose.connect("mongodb+srv://admin:5ety153hEi3upthg@cluster0.78zqwia.mongodb.net/test");
+const userSchema = new mongoose.Schema({
+    firstname: String,
+    lastname: String,
+    DOB: Date,
+    email: String,
+    username: String,
+    password: String
+});
+
 
 const add = async (tableName, entity) => {
     try {
-        Model = mongoose.model(tableName);
+        // Model = mongoose.model(tableName,schema);
+        console.log(entity);
+        Model = mongoose.model(tableName,userSchema);
         const object = new Model(entity);
         const result = await object.save();
         return result;

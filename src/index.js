@@ -3,6 +3,8 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 
+const authR=require('./routers/auth.r');
+
 const app = express();
 const port = 3000;
 const localhost = '127.0.0.1';
@@ -14,6 +16,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('hbs', handlebars.engine({extname: 'hbs'}));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use('/auth',authR);
 
 app.get('/', (req, res) => {
     res.render('home');

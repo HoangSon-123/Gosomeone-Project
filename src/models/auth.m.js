@@ -1,7 +1,7 @@
 //demo
 const db = require('./db');
-const tableName="Users";
-// Huy ket noi postgres REVOKE CONNECT ON DATABASE TARGET_DB FROM public;
+const tableName="user";
+
 module.exports = {
     all: async () => {
         const rs = await db.all(tableName);
