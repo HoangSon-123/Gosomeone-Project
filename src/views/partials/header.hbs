@@ -31,3 +31,14 @@
             document.getElementById("signupForm").classList.add('d-none');
         });
 </script>
+{{#if failLogin}}
+<script>
+    document.getElementById("loginForm").classList.remove('d-none');
+</script>
+{{/if}}
+
+{{#if failSignup}}
+<script>
+    document.getElementById("signupForm").classList.remove('d-none');
+</script>
+{{/if}}

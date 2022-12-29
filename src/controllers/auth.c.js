@@ -12,17 +12,17 @@ exports.formRegister = async (req, res, next) => {
 
         const uDBbyName = await userM.select("username", un);
         const uDBbyEmail = await userM.select("email", email);
-        console.log(uDBbyName, uDBbyEmail);
+        
         if(uDBbyEmail){
-            console.log('ton tai email');
             return res.render('home',{
-                errorMessage: 'Tài khoản Email đã được sử dụng'
+                failSignup: true,
+                errorMessageSignup: 'Email đã được sử dụng'
             })
         }
         if(uDBbyName){
-            console.log('ton tai ten tk');
             return res.render('home',{
-                errorMessage: 'Tên tài khoản đã được sử dụng'
+                failSignup: true,
+                errorMessageSignup: 'Tên tài khoản đã tồn tại'
             })
         }
 
@@ -50,7 +50,6 @@ exports.postLogin = async (req, res, next) => {
         const uDBbyName = await userM.select("username", un);
         const uDBbyEmail = await userM.select("email", un)
         const uDB = uDBbyName || uDBbyEmail
-       // console.log(uDB);
         const pwDB = uDB.password
         const match = await bcrypt.compare(pw, pwDB);
         if (match) {
@@ -60,7 +59,8 @@ exports.postLogin = async (req, res, next) => {
             return res.redirect('/')
         } else {
             return res.render('home', {
-                errorMessage: "Tên tài khoản hoặc mật khẩu không chính xác"
+                failLogin: true,
+                errorMessageLogin: "Tên tài khoản hoặc mật khẩu không chính xác"
             })
         }
     } catch (error) {
