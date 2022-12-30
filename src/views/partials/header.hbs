@@ -13,22 +13,21 @@
             <div class="navbar-menu-item">
                 <a class="text" href="#">how it works</a>
             </div>
-            <button id="usericon">
-                <img class="user-icon" src="/assets/images/user.png">
-            </button>
-            {{>loginmenu}}
-            {{>login}}
-            {{>signup}}
+            <img class="user-icon" src="/assets/images/user.png" data-bs-toggle="modal" data-bs-target="#side-menu">
         </div>
     </div>
-</header>
+    <div class="modal" id="side-menu" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    {{#if user}}
+                    {{> loginmenu }}
+                    {{else}}
+                    {{> usermenu }}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script>
-    document.getElementById("usericon")
-        .addEventListener('click', function (event) {
-            console.log(1);
-            document.getElementById("loginmenu").classList.remove('d-none');
-            document.getElementById("loginForm").classList.add('d-none');
-            document.getElementById("signupForm").classList.add('d-none');
-        });
-</script>
+</header>
