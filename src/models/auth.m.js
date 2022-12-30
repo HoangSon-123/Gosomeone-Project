@@ -4,7 +4,7 @@ const tableName= "User";
 
 module.exports = {
     all: async () => {
-        const rs = await db.all(tableName);
+        const rs = await db.getAll(tableName);
         return rs
     },
     add: async u => {
@@ -15,5 +15,5 @@ module.exports = {
         const rs=await db.getOne(tableName,"username",un);
         return rs;
     }
-
+    
 };
