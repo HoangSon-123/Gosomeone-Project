@@ -66,3 +66,33 @@ body {
 label {
     font-size: 14px;
 }
+
+.fs-7 {
+    font-size: 15px;
+}
+
+.btn-gradient-info {
+    color: white;
+    font-weight: 800;
+    background: linear-gradient(75.24deg, rgba(142, 255, 194, 0.72) -14.59%, rgba(0, 228, 201, 0.84) 116.8%);
+}
+
+button:hover {
+    outline: 1px solid rgba(182, 252, 243, 0.58);
+}
+
+.btn:hover {
+    outline: 1px solid black;
+}
+
+#avatar {
+    object-fit: cover;
+}
+
+.border-white {
+    border-color: white !important; 
+}
+
+.fs-8 {
+    font-size: 14px;
+}

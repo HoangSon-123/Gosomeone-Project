@@ -7,12 +7,13 @@
     --text-info: #1f5881;
     --text-dark: #000000;
 
-    --main-bg-color: #EBF5F2;
+    --main-bg-color: #ffffff;
     --footer-bg-color: #46487ce3;
     --box-color: #FFFFFF;
     --header-white: #FFFFFF;
-    --secondary-bg: #DDEBE7;
-    --homepage-addition-bg: #2e170340; 
+    --secondary-bg: rgba(131, 132, 135, 0.5);
+    --homepage-addition-bg: #2e170340;
+    --profile-cover: #a2dcee;
 
     --border: solid 1px rgba(0, 0, 0, 0.102);
 

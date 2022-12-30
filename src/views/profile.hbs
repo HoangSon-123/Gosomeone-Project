@@ -1,0 +1,140 @@
+<div class="container-fluid cover-image d-flex align-items-center justify-content-center">
+    <img id="cover-img">
+</div>
+<div class="container-md p-0 ms-auto me-auto mb-5">
+    <div class="profile">
+        <div class="profile-user mb-5">
+            {{#if user}}
+            <img class="border-white viewable-img" class="d-block" src="{{user.ava}}">
+            {{else}}
+            <img class="border-white viewable-img" class="d-block" src="/assets/images/user.png">
+            {{/if}}
+            <div>
+                <div class="fw-bolder fs-3">Waldez Thai</div>
+                <span class="text-secondary">Hi I'm Hien Thai abc...</span>
+            </div>
+        </div>
+        <div class="row row-cols-4 g-2 mb-5">
+            <div class="col">
+                <div class="verify-info border p-2 ps-3 pe-3 rounded-1">
+                    <i class="fa-solid fa-user-check fs-4" style="color: var(--text-success);"></i>
+                    <div class="mt-2 text-secondary">Identity verified</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="verify-info border p-2 ps-3 pe-3 rounded-1">
+                    <i class="fa-solid fa-phone fs-4" style="color: var(--text-success);"></i>
+                    <div class="mt-2 text-secondary">Phone verified</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="verify-info border p-4 ps-3 pe-3 rounded-1 text-center">
+                    <span class="fs-6 fw-bold">5.0</span>
+                    <i class="fa-solid fa-star fs-4 text-warning"></i>
+                </div>
+            </div>
+        </div>
+        <h5 class="fw-bold mb-3"><i class="fa-solid fa-camera fs-5"></i>&nbsp; Photos</h5>
+
+        <div class="mb-5">
+            <div class="profile-imgs d-flex flex-wrap gap-2">
+                <img class="viewable-img"
+                    src="https://photo-cms-plo.epicdn.me/w850/Uploaded/2022/vocgmvbg/2022_08_14/phuong-nhi-739.jpeg">
+                <img class="viewable-img"
+                    src="https://photo-cms-plo.epicdn.me/w850/Uploaded/2022/vocgmvbg/2022_08_14/phuong-nhi-739.jpeg">
+            </div>
+        </div>
+
+
+        <div id="view-profile-img" class="img-view d-none">
+            <button type="button" class="btn-close btn-close-white" aria-label="Close"
+                data-bs-target="#view-profile-img"></button>
+        </div>
+
+
+        <h5 class="fw-bold mb-3">About</h5>
+        <!-- Profile description -->
+        <div class="mb-5">
+            <p class="fs-8 mb-4">
+                Description description description description description description ha ah ha
+                description description description description description description description
+                description description description description
+            </p>
+            <div class="accordion">
+                <div id='addition-questions' class="mt-4 mb-4 accordion-collapse collapse">
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <div class="mb-2">
+                                <span class="fw-bold fs-7">What have you been doing in the past?</span>
+                            </div>
+                            <p class=" fs-8">
+                                abc abc abc abc abc abc abc abc abc abc abc abc abc
+                                abc abc abc abc abc
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="mb-2">
+                                <span class="fw-bold fs-7">What kind of person you are?</span>
+                            </div>
+                            <p class=" fs-8">
+                                abc abc abc abc abc abc abc abc abc abc abc abc abc
+                                abc abc abc abc abc
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <div class="mb-2">
+                                <span class="fw-bold fs-7">What is your favorite?</span>
+                            </div>
+                            <p class=" fs-8">
+                                abc abc abc abc abc abc abc abc abc abc abc abc abc
+                                abc abc abc abc abc
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="mb-2">
+                                <span class="fw-bold fs-7">Your Travel Experience?</span>
+                            </div>
+                            <p class=" fs-8">
+                                abc abc abc abc abc abc abc abc abc abc abc abc abc
+                                abc abc abc abc abc
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button id="read-more-profile" class="accordion-button collapsed border rounded-1"
+                    data-bs-toggle="collapse" data-bs-target="#addition-questions">
+                    READ MORE&nbsp;
+                </button>
+            </div>
+        </div>
+        <h5 class="fw-bold mb-3">Joined trips</h5>
+        <div class="row row-cols-3 g-1">
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
+                    <div class="card-body">
+                        <div class="destination"><i class="fa-solid fa-location-dot"></i>&nbsp;Destination</div>
+                        <a class="card-title">Trips title title title title title title title title title
+                            title title title title title title title </a>
+                        <div class="date">
+                            <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
+                                22 DEC 22</span>
+                            <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; 7 Days</span>
+                        </div>
+                        <hr />
+                        <div class="price d-flex flex-column">
+                            <div>
+                                <span class="cost">1.000.000</span>
+                                <span class="currency">VND</span>
+                            </div>
+                            <div class="unit">per tripmate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
