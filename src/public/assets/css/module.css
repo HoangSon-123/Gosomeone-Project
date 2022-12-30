@@ -423,3 +423,112 @@ body.modal-open {
     overflow-y: scroll !important;
 
 }
+
+/* Edit profile */
+
+.cover-image {
+    padding: 0;
+    height: 300px;
+}
+
+.cover-image img {
+    position: absolute;
+    z-index: -1;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    background-color: var(--profile-cover);
+}
+
+.cover-image .input-cover-image label {
+    font-size: 16px;
+    text-align: center;
+    background-color: var(--secondary-bg);
+    color: var(--text-secondary);
+    border-radius: 5px;
+    padding: 10px;
+    opacity: 50%;
+}
+
+.cover-image .input-cover-image label>i {
+    font-size: 25px;
+}
+
+.profile-user {
+    margin-top: -80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-user img {
+    border-radius: 50%;
+    border: solid 5px rgba(75, 73, 73, 0.345);
+    width: 160px;
+    height: 160px;
+    background-color: white;
+}
+
+.edit-profile input[type='text'], textarea, #input-image {
+    font-size: 14px;
+    border: solid 1px rgba(149, 149, 149, 0.67);
+    padding: 10px 15px 10px 15px;
+    border-radius: 3px;
+    display: block;
+    width: 100%;
+}
+
+.edit-profile input[type='text']:focus {
+    outline: 1px solid rgb(135, 186, 220);
+}
+
+.edit-profile .input-img .preview img {
+    height: 200px;
+}
+
+#change-ava-btn {
+    position: absolute;
+    color: var(--text-secondary);
+}
+
+/* Profile */
+
+#read-more-profile {
+    width: fit-content;
+}
+
+.img-view {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-imgs img {
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    height: 250px;
+}
+
+.img-view img {
+    max-height: 90%;
+    max-width: 90%;
+}
+
+.img-view {
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
