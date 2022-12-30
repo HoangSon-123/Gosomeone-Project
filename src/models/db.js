@@ -16,7 +16,7 @@ const add = async (tableName, entity) => {
 const getAll = async tableName => {
     try {
         Model = mongoose.model(tableName);
-        const result = await Model.find();
+        const result = await Model.find().lean();
         return result;
     } catch (err) {
         console.log(err);
