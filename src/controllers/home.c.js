@@ -1,11 +1,11 @@
 
 const homeM = require('../models/home.m');
-const userM = require('../models/auth.m');
+const siteM = require('../models/site.model');
 
 exports.loadPage = async (req, res, next) => {
     try {
         const trips = await homeM.load();
-        console.log(trips);
+        // console.log(trips);
         for (let indexTrip = 0; indexTrip < trips.length; indexTrip++) {
 
             const date = new Date(trips[indexTrip].start_day)
@@ -15,14 +15,14 @@ exports.loadPage = async (req, res, next) => {
 
             trips[indexTrip].participants_user = [];
             for (let indexPar = 0; indexPar <  trips[indexTrip].participants_id.length; indexPar++) {
-                const par = await userM.select("_id",  trips[indexTrip].participants_id[indexPar]);
+                const par = await siteM.select("_id",  trips[indexTrip].participants_id[indexPar]);
                 trips[indexTrip].participants_user.push(par);
             }
 
         }
-        console.log(trips[0].participants_user);
+        // console.log(trips[0].participants_user);
         res.render('home', {
-            username: req.session.username,
+            username: req.cookies.user.first_name + ' ' + req.cookies.user.last_name,
             trips: trips
         });
 

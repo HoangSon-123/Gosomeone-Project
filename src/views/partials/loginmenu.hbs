@@ -1,51 +1,5 @@
-<<<<<<< HEAD
-{{#if username}}
-<div class="login-menu p-5 d-none" id="accountmenu">
-    <p>Hello, {{username}}</p>
-    <a class="login-btn btn btn-primary w-100 rounded-1" id="editFromAccountmenu">EDIT USER INFO</a>
-    <span class="text-small"><small>Or</small></span>
-    <a class="signup-btn btn btn-outline-secondary w-100 rounded-1" id="logoutFromAccountmenu">LOGOUT</a>
-</div>
-<script>
-    document.getElementById("usericon")
-        .addEventListener('click', function (event) {
-            document.getElementById("accountmenu").classList.remove('d-none');
-        });
-
-    document.getElementById("accountmenu")
-        .addEventListener('click', function (event) {
-            document.getElementById("accountmenu").classList.add('d-none');
-        });
-</script>
-{{else}}
-<div class="login-menu p-5 d-none" id="loginmenu">
-    <a class="login-btn btn btn-primary w-100 rounded-1" id="loginFromLoginmenu">LOG IN</a>
-    <span class="text-small"><small>Or still need to join?</small></span>
-    <a class="signup-btn btn btn-outline-secondary w-100 rounded-1" id="signupFromLoginmenu">SIGN UP</a>
-</div>
-
-
-<script>
-    document.getElementById("loginmenu")
-        .addEventListener('click', function (event) {
-            document.getElementById("loginmenu").classList.add('d-none');
-        });
-
-    document.getElementById("loginFromLoginmenu")
-        .addEventListener('click', function (event) {
-            document.getElementById("loginForm").classList.remove('d-none');
-        });
-
-    document.getElementById("signupFromLoginmenu")
-        .addEventListener('click', function (event) {
-            document.getElementById("signupForm").classList.remove('d-none');
-        });
-</script>
-{{/if}}
-=======
 <div class="login-menu p-5">
-    <a class="login-btn btn btn-primary w-100 rounded-1" href="/login">LOG IN</a>
+    <a class="login-btn btn btn-primary w-100 rounded-1" href="/site/logging">LOG IN</a>
     <span class="text-small"><small>Or still need to join?</small></span>
-    <a class="signup-btn btn btn-outline-secondary w-100 rounded-1" href="/signup">SIGN UP</a>
+    <a class="signup-btn btn btn-outline-secondary w-100 rounded-1" href="/site/signing">SIGN UP</a>
 </div>
->>>>>>> origin/Hien

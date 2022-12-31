@@ -21,35 +21,13 @@
             <div class="modal-content">
                 <div class="modal-body p-0">
                     {{#if user}}
-                    {{> loginmenu }}
-                    {{else}}
                     {{> usermenu }}
+                    {{else}}
+                    {{> loginmenu }}
                     {{/if}}
                 </div>
             </div>
         </div>
     </div>
 
-<<<<<<< HEAD
-<script>
-    document.getElementById("usericon")
-        .addEventListener('click', function (event) {
-            document.getElementById("loginmenu").classList.remove('d-none');
-            document.getElementById("loginForm").classList.add('d-none');
-            document.getElementById("signupForm").classList.add('d-none');
-        });
-</script>
-{{#if failLogin}}
-<script>
-    document.getElementById("loginForm").classList.remove('d-none');
-</script>
-{{/if}}
-
-{{#if failSignup}}
-<script>
-    document.getElementById("signupForm").classList.remove('d-none');
-</script>
-{{/if}}
-=======
 </header>
->>>>>>> origin/Hien
