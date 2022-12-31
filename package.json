@@ -22,11 +22,14 @@
   "homepage": "https://github.com/HoangSon-123/Gosomeone-Project#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
-    "mongoose": "^6.8.1"
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.1",
+    "nodemailer": "^6.8.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
