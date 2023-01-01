@@ -532,3 +532,86 @@ body.modal-open {
     top: 15px;
     right: 15px;
 }
+
+/* trip */
+.carousel-indicators {
+    position: relative;
+}
+
+.carousel-indicators button {
+    width: 11px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    background-color: #5cc1dd !important;
+}
+
+.carousel .carousel-item img {
+    max-height: 580px;
+    width: 100%;
+    object-fit: cover;
+}
+
+#next-item, #prev-item { 
+    height: auto;
+    opacity: 40%;
+    background-size: cover;
+    background-position: 30% 30%;
+}
+
+
+.location-no {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.location-name i {
+    color: blueviolet;
+    font-size: 19px;
+}
+
+.location img {
+    border-radius: 5px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.included-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.included-item i {
+    font-size: 25px;
+}
+
+.trip-leader img {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+}
+
+.tripmate {
+    min-width: 80px;
+}
+
+.tripmate h6 {
+    text-align: center;
+}
+
+.tripmate img {
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
