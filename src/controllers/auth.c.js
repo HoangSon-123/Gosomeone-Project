@@ -42,18 +42,18 @@ exports.formLogin = async (req, res, next) => {
 
         const user = await userM.byName(un);
         if (!user) {
-            console.error("Không tìm thấy người dùng");
             return res.render('login', {
-                user: req.session.user
+                user: req.session.user,
+                error: "Không tìm thấy người dùng"
             });
         }
 
         const match = await bcrypt.compare(pw, user.password);
 
         if (!match) {
-            console.error("Sai mật khẩu");
             return res.render('login', {
-                user: req.session.user
+                user: req.session.user,
+                error: "Sai mật khẩu"
             });
         }
         else {
