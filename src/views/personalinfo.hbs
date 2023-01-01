@@ -1,0 +1,88 @@
+<div class="personal-info">
+    <div class="container-md p-0 mx-auto mb-4">
+        <div class="my-4">
+            <h3 class="fw-bolder">Personal Information</h3>
+        </div>
+        <form>
+            <div class="d-flex flex-column gap-5">
+                <div class="d-flex flex-column gap-3">
+                    <div>
+                        <label class="mb-2">First name</label>
+                        <input type="text" class="form-control rounded-1 p-2 fs-7">
+                    </div>
+                    <div>
+                        <label class="mb-2">Last name</label>
+                        <input type="text" class="form-control rounded-1 p-2 fs-7">
+                    </div>
+                    <div>
+                        <label class="mb-2">Date of birth</label>
+                        <input type="date" class="form-control rounded-1 p-2 fs-7">
+                    </div>
+                </div>
+                <div>
+                    <h5 class="fw-bolder mb-3">Verification</h5>
+                    <p class="fs-7 text-secondary   ">The more you can verify your identity, the more our community
+                        of
+                        TripMates and TripLeaders will trust you.</p>
+                    <div class="border d-flex justify-content-between align-items-center gap-3 p-2">
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="fa-regular fa-circle-check fs-2"></i>&nbsp;
+                            <div>
+                                <h6 class="fw-bolder mb-0">Identity</h6>
+                                <span class="fs-8 text-secondary">
+                                    We display that your identity is verified
+                                </span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-gradient-danger fs-6">Verify</button>
+                    </div>
+                    <div class="border d-flex justify-content-between align-items-center gap-3 p-2">
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="fa-regular fa-circle-check fs-2 text-success"></i>&nbsp;
+                            <div>
+                                <h6 class="fw-bolder mb-0 text-success">Mobile Number</h6>
+                                <span class="fs-8 text-secondary">Verified mobile number: 012 3456 789</span>
+                            </div>
+                        </div>
+                        <button type="button" class="text-success fw-bolder fs-6">Change</button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="fw-bolder mb-3">Account information</h5>
+                    <div>
+                        <label class="mb-2">Email</label>
+                        <div class="d-flex align-items-center justify-content-between border">
+                            <input class="p-2 w-100" name="email" type="text" value="waldez@gmail.com" readonly>
+                            <button type="button" class="fw-bolder text-success">Change</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="mb-2">Password</label>
+                        <div class="d-flex align-items-center justify-content-between border">
+                            <input class="p-2 w-100" type="password" value="......" disabled>
+                            <button type='button' class="fw-bolder text-success">Change</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h5 class="fw-bolder mb-3">Settings</h5>
+                    <label class="mb-2">Language for GoSomeone</label>
+                    <div class="d-flex gap-3">
+                        <div class="form-check">
+                            <input name="lang" class="form-check-input" type="radio" id="eng-lang" value="eng" checked>
+                            <label class="fs-6" for="eng-lang">English</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="lang" class="form-check-input" type="radio" id="vie-lang" value="vie">
+                            <label class="fs-6" for="eng-lang">Vietnamese</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="m-auto d-block btn-gradient-info text-uppercase rounded-1">save
+                information</button>
+        </form>
+        <hr />
+        <button type="button" class="d-block m-auto fw-bolder text-danger text-uppercase">delete account</button>
+    </div>
+</div>
