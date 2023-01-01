@@ -3,6 +3,18 @@ const userM = require('../models/auth.m')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+exports.getLoginForm = async (req, res, next) => {
+    res.render('login', {
+        user: req.session.user
+    });
+}
+
+exports.getSignupForm = async (req, res, next) => {
+    res.render('signup', {
+        user: req.session.user
+    });
+}
+
 exports.formRegister = async (req, res, next) => {
     try {
         const pw = req.body.password
@@ -31,18 +43,24 @@ exports.formLogin = async (req, res, next) => {
         const user = await userM.byName(un);
         if (!user) {
             console.error("Không tìm thấy người dùng");
-            return res.redirect('/');
+            return res.render('login', {
+                user: req.session.user
+            });
         }
 
         const match = await bcrypt.compare(pw, user.password);
 
         if (!match) {
             console.error("Sai mật khẩu");
-            return res.redirect('/');
+            return res.render('login', {
+                user: req.session.user
+            });
         }
         else {
             // Đăng nhập
-            req.session.username = user.username;
+            req.session.user = {
+                name: user.username
+            };
             res.redirect('/');
         }
 

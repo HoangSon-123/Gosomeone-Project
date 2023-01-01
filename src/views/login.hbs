@@ -1,4 +1,4 @@
-<div class="container-fluid p-4 wrapper d-none" id="loginForm">
+<div class="container-fluid p-4 wrapper" id="loginForm">
     <div class="container-sm p-4 login-signup-form">
         <h5 class="mb-4"><b>Log in</b></h5>
         <button id="google-login" class="btn border"><i class="fa-brands fa-google float-start"></i>Continue
@@ -16,14 +16,6 @@
             <button class="btn btn-primary w-100 rounded-1" type="submit">LOG IN</button>
         </form>
         <hr>
-        <span><i>Or you still not have an account? <a class="login-btn btn btn-primary w-100 rounded-1" id="signupFromLogin">Sign up</a></i></span>
+        <span><i>Or you still not have an account? <a class="login-btn btn btn-primary w-100 rounded-1" id="signupFromLogin" href="/auth/signup">Sign up</a></i></span>
     </div>
 </div>
-
-<script>
-    document.getElementById("signupFromLogin")
-        .addEventListener('click', function (event) {
-            document.getElementById("loginForm").classList.add('d-none');
-            document.getElementById("signupForm").classList.remove('d-none');
-        });
-</script>

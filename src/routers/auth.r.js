@@ -6,6 +6,8 @@ const userC=require('../controllers/auth.c')
 
 router.post('/signup',userC.formRegister)
 router.post('/login',userC.formLogin)
+router.get('/signup',userC.getSignupForm)
+router.get('/login',userC.getLoginForm)
 // router.get('/login',(req,res)=>{
 //     res.render('login')
 // })

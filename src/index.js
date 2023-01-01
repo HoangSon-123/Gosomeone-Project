@@ -15,7 +15,7 @@ mongoose.connect((process.env.MONGODB_URL), () => {
     console.log("Đã kết nối đến MongoDB");
 });
 
-const authR=require('./routers/auth.r');
+const authR = require('./routers/auth.r');
 
 const app = express();
 const port = 3000;
@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.engine('hbs', handlebars.engine({extname: 'hbs'}));
+app.engine('hbs', handlebars.engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -37,12 +37,12 @@ app.use(session({
     cookie: { secure: false }
 }))
 
-app.use('/auth',authR);
+app.use('/auth', authR);
 
 app.get('/', (req, res) => {
-    console.log(req.session.username)
+    console.log(req.session.user)
     res.render('home', {
-        username: req.session.username
+        user: req.session.user
     });
 });
 
