@@ -4,7 +4,7 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const session = require('express-session');
+const cookieParser = require('cookie-parser')
 
 // Dùng file .env
 dotenv.config({ path: __dirname + '/.env' });
@@ -15,36 +15,36 @@ mongoose.connect((process.env.MONGODB_URL), () => {
     console.log("Đã kết nối đến MongoDB");
 });
 
-const authR=require('./routers/auth.r');
+const siteR=require('./routers/site.router');
+const homeR=require('./routers/home.r');
 
 const app = express();
 const port = 3000;
 const localhost = '127.0.0.1';
 
+//Set up session
+require('./config/session')(app)
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//cookie
+app.use(cookieParser());
 
 app.engine('hbs', handlebars.engine({extname: 'hbs'}));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// add session
-app.use(session({
-    secret: 'gso',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-}))
+app.use('/site',siteR);
 
-app.use('/auth',authR);
-
-app.get('/', (req, res) => {
-    console.log(req.session.username)
-    res.render('home', {
-        username: req.session.username
-    });
-});
+// app.get('/', (req, res) => {
+//     console.log(req.session.username)
+//     res.render('home', {
+//         username: req.session.username
+//     });
+// });
+app.use('/', homeR);
 
 app.listen(port, () => {
     console.log(`Server running at http://${localhost}:${port}/`);

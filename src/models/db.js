@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 
 const add = async (tableName, entity) => {
     try {
-        console.log(entity);
         Model = mongoose.model(tableName);
         const object = new Model(entity);
         const result = await object.save();
@@ -17,7 +16,7 @@ const add = async (tableName, entity) => {
 const getAll = async tableName => {
     try {
         Model = mongoose.model(tableName);
-        const result = await Model.find();
+        const result = await Model.find().lean();
         return result;
     } catch (err) {
         console.log(err);
