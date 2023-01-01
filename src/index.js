@@ -16,7 +16,7 @@ mongoose.connect((process.env.MONGODB_URL), () => {
 });
 
 const siteR=require('./routers/site.router');
-const homeR=require('./routers/home.r');
+
 
 const app = express();
 const port = 3000;
@@ -38,13 +38,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use('/site',siteR);
 
-// app.get('/', (req, res) => {
-//     console.log(req.session.username)
-//     res.render('home', {
-//         username: req.session.username
-//     });
-// });
-app.use('/', homeR);
+app.get('/', (req, res) => {
+    res.render('home', {
+    });
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://${localhost}:${port}/`);

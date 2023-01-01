@@ -3,7 +3,6 @@ const siteM = require('../models/site.model')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
-const nodemailer = require("nodemailer");
 
 exports.formRegister = async (req, res, next) => {
     try {
@@ -84,7 +83,6 @@ exports.postLogin = async (req, res, next) => {
             const uDB = uDBbyName || uDBbyEmail
             if (!uDB) {
                 return res.render('login', {
-                    failLogin: true,
                     errorMessage: "Tên tài khoản hoặc mật khẩu không chính xác"
                 })
             }
@@ -108,7 +106,6 @@ exports.postLogin = async (req, res, next) => {
                 return res.redirect('/')
             } else {
                 return res.render('login', {
-                    failLogin: true,
                     errorMessage: "Tên tài khoản hoặc mật khẩu không chính xác"
                 })
             }
