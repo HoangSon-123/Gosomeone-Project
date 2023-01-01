@@ -40,6 +40,7 @@ app.use('/site',siteR);
 
 app.get('/', (req, res) => {
     res.render('home', {
+        user: req.cookies.user
     });
 });
 
