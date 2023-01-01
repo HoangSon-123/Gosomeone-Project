@@ -15,6 +15,8 @@ router.post('/signup',siteC.formRegister);
     
 router.get('/logout', siteC.postLogout);
 
-
+router.get('/edit-profile', (req, res) => {
+    res.render('editprofile');
+});
 
 module.exports=router;
