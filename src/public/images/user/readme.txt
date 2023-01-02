@@ -1,0 +1,1 @@
+Là thư mục chứa hình ảnh cá nhân do người dùng tải lên
