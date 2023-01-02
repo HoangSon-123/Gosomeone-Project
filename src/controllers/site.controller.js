@@ -3,6 +3,8 @@ const siteM = require('../models/site.model')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const path = require('path');
 
 exports.formRegister = async (req, res, next) => {
     try {
@@ -119,9 +121,57 @@ exports.postLogin = async (req, res, next) => {
     }
 }
 
-exports.postLogout = (req, res, next) => {  
+exports.postLogout = (req, res, next) => {
     console.log(req.cookies.user);
     res.clearCookie('token');
     res.clearCookie('user');
     res.redirect('/');
+}
+
+exports.postEditProfile = async (req, res, next) => {
+    try {
+        const userID = req.cookies.user._id;
+
+        var newLink = {
+            ava: undefined,
+            coverImg: undefined
+        };
+
+        if (req.files.ava) {
+            const ava = req.files.ava[0];
+            const temppath = ava.path;
+            const newpath = path.normalize(__dirname + `/../public/images/ava_${userID}.jpg`);
+            console.log("Avatar sẽ được lưu tại " + newpath);
+
+            // Lưu hình
+            fs.rename(temppath, newpath, function (err) {
+                if (err) next(err);
+            });
+
+            newLink.ava = newpath
+        };
+
+        if (req.files.coverImg) {
+            const coverImg = req.files.coverImg[0];
+            const temppath = coverImg.path;
+            const newpath = path.normalize(__dirname + `/../public/images/coverImg_${userID}.jpg`);
+            console.log("Ảnh bìa sẽ được lưu tại " + newpath);
+
+            // Lưu hình
+            fs.rename(temppath, newpath, function (err) {
+                if (err) next(err);
+            });
+
+            newLink.coverImg = newpath
+        };
+        
+        console.log(newLink)
+
+        // Lưu link hình vào db
+        siteM.update("_id", userID, newLink)
+
+        res.redirect('/');
+    } catch (error) {
+        next(error);
+    }
 }

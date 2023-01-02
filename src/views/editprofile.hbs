@@ -1,5 +1,5 @@
 <div class="container-fluid cover-image d-flex align-items-center justify-content-center">
-    <img id="cover-img">
+    <img id="coverImg">
     <div class="input-cover-image">
         <label class="btn" for="input-cover-img">
             <i class="fa-regular fa-image"></i></br>
@@ -19,11 +19,11 @@
             <button class="change-ava-btn" id="change-ava-btn">
                 <label for="change-ava"><i class="fa-regular fa-pen-to-square fs-4"></i></label>
             </button>
-            <input id="change-ava" class="d-none" type="file">
+
         </div>
-        <form>
-            <input class="d-none" type="file" id="input-cover-img" accept="image/*" name="cover-img">
-            <input id="change-ava" class="d-none" type="file">
+        <form action="/site/edit-profile" method="post" enctype="multipart/form-data">
+            <input class="d-none" type="file" id="input-cover-img" accept="image/*" name="coverImg">
+            <input id="change-ava" class="d-none" type="file" accept="image/*" name="ava">
             <div class="d-flex flex-column gap-3 mt-4 mb-4">
                 <div class="">
                     <label class="mb-1">Bio</label>

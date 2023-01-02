@@ -47,7 +47,7 @@ $(() => {
         change: function (event) {
             if (event.target.files.length > 0) {
                 let src = URL.createObjectURL(event.target.files[0]);
-                $('#cover-img').attr('src', src);
+                $('#coverImg').attr('src', src);
             }
         }
     });
