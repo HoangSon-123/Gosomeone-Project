@@ -140,7 +140,7 @@ exports.postEditProfile = async (req, res, next) => {
         if (req.files.ava) {
             const ava = req.files.ava[0];
             const temppath = ava.path;
-            const newpath = path.normalize(__dirname + `/../public/images/ava_${userID}.jpg`);
+            const newpath = path.normalize(__dirname + `/../public/images/user/ava_${userID}.jpg`);
             console.log("Avatar sẽ được lưu tại " + newpath);
 
             // Lưu hình
@@ -148,13 +148,13 @@ exports.postEditProfile = async (req, res, next) => {
                 if (err) next(err);
             });
 
-            newLink.ava = `/images/ava_${userID}.jpg`
+            newLink.ava = `/images/user/ava_${userID}.jpg`
         };
 
         if (req.files.coverImg) {
             const coverImg = req.files.coverImg[0];
             const temppath = coverImg.path;
-            const newpath = path.normalize(__dirname + `/../public/images/coverImg_${userID}.jpg`);
+            const newpath = path.normalize(__dirname + `/../public/images/user/coverImg_${userID}.jpg`);
             console.log("Ảnh bìa sẽ được lưu tại " + newpath);
 
             // Lưu hình
@@ -163,7 +163,7 @@ exports.postEditProfile = async (req, res, next) => {
             });
 
 
-            newLink.coverImg = `/images/coverImg_${userID}.jpg`
+            newLink.coverImg = `/images/user/coverImg_${userID}.jpg`
         };
 
         console.log(newLink)
