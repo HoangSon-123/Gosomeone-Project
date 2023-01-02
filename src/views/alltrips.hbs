@@ -1,0 +1,173 @@
+<div class="alltrip pb-4" style="background-color: #d9eeeed5;">
+    <div class="container-fluid bg-info d-flex align-items-center" style="height: 260px;">
+        <div class="container-md m-auto">
+            <h1 class="fw-bolder text-light text-center">
+                Discover your next big adventure, hosted by passionate travelers
+            </h1>
+        </div>
+    </div>
+    <div class="container-fluid" style="height: 50px; background-color: #EDE4E4;">
+    </div>
+    <div class="container-xl mx-auto mt-4 p-0">
+        <div class="row m-0 gx-4">
+            <div class="col-4">
+                <div class="d-flex flex-column gap-3">
+                    <form action="#">
+                        <div class="border rounded-1 d-flex gap-2 bg-white">
+                            <input type="text" name="keyword" class="d-block w-100 p-2 fs-7"
+                                placeholder="Where do you want to go?">
+                            <button type="submit" class="btn-gradient-danger"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+                    <h6 class="fw-bold mt-2">Trip type</h6>
+                    <div class="row row-cols-2 gx-2">
+                        <div class="col">
+                            <button id="guided-trip" type="button"
+                                class="text-muted w-100 btn bg-white fs-7 filter-btn">
+                                Guided trips
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="coworking-trip" type="button"
+                                class="text-muted w-100 btn bg-white fs-7 filter-btn">
+                                Coworking Trips
+                            </button>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                    <h6 class="fw-bold">Departure month</h6>
+                    <div class="d-flex flex-column gap-2">
+                        <div class="row w-100 m-0">
+                            <div class="col-2">
+                                <div class="fs-8 text-uppercase text-secondaryp mt-2 text-end">from</div>
+                            </div>
+                            <div class="col-10 p-0">
+                                <select class="form-select text-center" id="dep-month-from">
+                                    <option selected>Choose...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row w-100 m-0">
+                            <div class="col-2">
+                                <div class="fs-8 text-uppercase text-secondaryp mt-2 text-end">to</div>
+                            </div>
+                            <div class="col-10 p-0">
+                                <select class="form-select text-center" id="dep-month-to">
+                                    <option selected>Choose...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                    <h6 class="fw-bold">Duration</h6>
+                    <div>
+                        <input id="duration" type="number" value="1" class="p-2 rounded-1 w-25 text-center">
+                        <span class="text-secondary">&nbsp;day(s)</span>
+                    </div>
+                    <hr class="m-0">
+                    <h6 class="fw-bold">Price</h6>
+                    <div>
+                        <input id="price" type="range" class="form-range" min="0" max="10000000" id="customRange2"
+                            value="0">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <span id="price-from">0</span>
+                            </div>
+                            <div>
+                                <span class="text-success">VND&nbsp;</span><span class="fw-bold">100000000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="mb-2 d-flex gap-1">
+                    <h4 class="text-info fw-bold">3</h4>
+                    <h4 class="fw-bold">Trips</h4>
+                </div>
+                <div class="row row-cols-3 g-2">
+                    <div class="col">
+                        <div class="card">
+                            <img class="card-img-top"
+                                src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
+                            <div class="card-body">
+                                <div class="destination"><i class="fa-solid fa-location-dot"></i>&nbsp;Destination
+                                </div>
+                                <a class="card-title">Trips title title title title title title title title title
+                                    title title title title title title title </a>
+                                <div class="date">
+                                    <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
+                                        22 DEC 22</span>
+                                    <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; 7 Days</span>
+                                </div>
+                                <hr />
+                                <div class="price d-flex flex-column">
+                                    <div>
+                                        <span class="cost">1.000.000</span>
+                                        <span class="currency">VND</span>
+                                    </div>
+                                    <div class="unit">per tripmate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img class="card-img-top"
+                                src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
+                            <div class="card-body">
+                                <div class="destination">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Destination</span>
+                                </div>
+                                <a class="card-title">Trips title title title title title title title title title
+                                    title title title title title title title </a>
+                                <div class="date">
+                                    <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
+                                        22 DEC 22</span>
+                                    <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; 7 Days</span>
+                                </div>
+                                <hr />
+                                <div class="price d-flex flex-column">
+                                    <div>
+                                        <span class="cost">1.000.000</span>
+                                        <span class="currency">VND</span>
+                                    </div>
+                                    <div class="unit">per tripmate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img class="card-img-top"
+                                src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
+                            <div class="card-body">
+                                <div class="destination">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Destination</span>
+                                </div>
+                                <a class="card-title">Trips title title title title title title title title title
+                                    title title title title title title title </a>
+                                <div class="date">
+                                    <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
+                                        22 DEC 22</span>
+                                    <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; 7 Days</span>
+                                </div>
+                                <hr />
+                                <div class="price d-flex flex-column">
+                                    <div>
+                                        <span class="cost">1.000.000</span>
+                                        <span class="currency">VND</span>
+                                    </div>
+                                    <div class="unit">per tripmate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

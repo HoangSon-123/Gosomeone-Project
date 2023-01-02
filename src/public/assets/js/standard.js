@@ -76,4 +76,34 @@ $(() => {
             $('.img-view img').remove();
         }
     });
+
+    $('.filter-btn').on({
+        click: function(event) {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            } else {
+                $(this).addClass('active');
+            }
+        }
+    });
+
+    $('#price').on({
+        input: function(event) {
+            $('#price-from').html(event.target.value + '');
+        }
+    });
+
+    const MONTH = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const date = new Date();
+    const year = date.getFullYear();
+    for (let i = date.getMonth(); i < date.getMonth() + 5; i++) {
+        var m = i;
+        var y = year;
+        if (i > 12) {
+            month = i  % 12;
+            y = year + 1;
+        }
+        $('#dep-month-from').append(`<option value="${MONTH[m - 1]} ${y}">${MONTH[m]} ${y}</option>`);
+        $('#dep-month-to').append(`<option value="${MONTH[m - 1]} ${y}">${MONTH[m]} ${y}</option>`);
+    }
 })
