@@ -148,7 +148,7 @@ exports.postEditProfile = async (req, res, next) => {
                 if (err) next(err);
             });
 
-            newLink.ava = newpath
+            newLink.ava = `/images/ava_${userID}.jpg`
         };
 
         if (req.files.coverImg) {
@@ -162,13 +162,24 @@ exports.postEditProfile = async (req, res, next) => {
                 if (err) next(err);
             });
 
-            newLink.coverImg = newpath
+
+            newLink.coverImg = `/images/coverImg_${userID}.jpg`
         };
-        
+
         console.log(newLink)
 
         // Lưu link hình vào db
         siteM.update("_id", userID, newLink)
+
+        // Sửa cookie
+        const uDB = await siteM.select("_id", userID);
+        uDB.username = undefined;
+        uDB.password = undefined;
+        console.log(uDB);
+        res.cookie('user', uDB, {
+            maxAge: 1000 * 60 * 60 * 24 * 10,
+            httpOnly: true
+        })
 
         res.redirect('/');
     } catch (error) {

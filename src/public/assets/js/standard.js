@@ -1,5 +1,5 @@
 $(() => {
-    $('.header-white .logo img').attr('src', './assets/images/logo_b.png');
+    $('.header-white .logo img').attr('src', '/assets/images/logo_b.png');
     $('.header-white .navbar-menu-item a').css({
         "color": "var(--text-dark)"
     });
