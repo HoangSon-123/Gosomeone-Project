@@ -615,3 +615,15 @@ body.modal-open {
     border-radius: 50%;
     object-fit: cover;
 }
+
+/* all trips */
+
+.bg-white {
+    background-color: white;
+}
+
+.filter-btn.active {
+    background-color: rgb(5, 182, 182) !important;
+    color: white !important;
+    outline: none !important;
+}
