@@ -132,10 +132,9 @@ exports.postEditProfile = async (req, res, next) => {
     try {
         const userID = req.cookies.user._id;
 
-        var newLink = {
-            ava: undefined,
-            coverImg: undefined
-        };
+        var newData = {
+            profile: req.body
+        }
 
         if (req.files.ava) {
             const ava = req.files.ava[0];
@@ -143,12 +142,12 @@ exports.postEditProfile = async (req, res, next) => {
             const newpath = path.normalize(__dirname + `/../public/images/user/ava_${userID}.jpg`);
             console.log("Avatar sẽ được lưu tại " + newpath);
 
-            // Lưu hình
+            // Lưu hình đại diện
             fs.rename(temppath, newpath, function (err) {
                 if (err) next(err);
             });
 
-            newLink.ava = `/images/user/ava_${userID}.jpg`
+            newData.profile.ava = `/images/user/ava_${userID}.jpg`
         };
 
         if (req.files.coverImg) {
@@ -157,19 +156,36 @@ exports.postEditProfile = async (req, res, next) => {
             const newpath = path.normalize(__dirname + `/../public/images/user/coverImg_${userID}.jpg`);
             console.log("Ảnh bìa sẽ được lưu tại " + newpath);
 
-            // Lưu hình
+            // Lưu hình bìa
             fs.rename(temppath, newpath, function (err) {
                 if (err) next(err);
             });
 
 
-            newLink.coverImg = `/images/user/coverImg_${userID}.jpg`
+            newData.profile.cover_img = `/images/user/coverImg_${userID}.jpg`
         };
 
-        console.log(newLink)
+        if (req.files.imgs) {
+            newData.profile.imgs = [];
+
+            (req.files.imgs).forEach((img, index) => {
+                const temppath = img.path;
+                const newpath = path.normalize(__dirname + `/../public/images/user/img_${userID}_${index}.jpg`);
+                console.log("Ảnh khác sẽ được lưu tại " + newpath);
+    
+                // Lưu hình khác
+                fs.rename(temppath, newpath, function (err) {
+                    if (err) next(err);
+                });
+    
+                newData.profile.imgs.push(`images/user/img_${userID}_${index}.jpg`)
+            });
+        }
+
+        console.log(newData)
 
         // Lưu link hình vào db
-        siteM.update("_id", userID, newLink)
+        await siteM.update("_id", userID, newData)
 
         // Sửa cookie
         const uDB = await siteM.select("_id", userID);

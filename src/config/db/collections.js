@@ -1,5 +1,22 @@
 const mongoose = require("mongoose");
 
+const verificationSchema = new mongoose.Schema({
+    phone:      Boolean,
+    identity:   Boolean
+});
+
+const profileSchema = new mongoose.Schema({
+    ava:        String,
+    cover_img:  String,
+    imgs:       [String],
+    bio:        String,
+    description:String,
+    q1:         String,
+    q2:         String,
+    q3:         String,
+    q4:         String
+});
+
 const userSchema = new mongoose.Schema({
     first_name: {
         type: String,
@@ -22,20 +39,13 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     email: {
-        type: String
+        type: String,
+        required: true
     },
-    phone_number: {
-        type: String
-    },
-    user_id: {
-        type: String
-    },
-    ava: {
-        type: String
-    },
-    coverImg: {
-        type: String
-    }
+    phone_number:   String,
+    user_id:        String,
+    verification:   verificationSchema,
+    profile:        profileSchema
 });
 
 const assess = new mongoose.Schema({
