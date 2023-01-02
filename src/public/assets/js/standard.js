@@ -1,5 +1,5 @@
 $(() => {
-    $('.header-white .logo img').attr('src', './assets/images/logo_b.png');
+    $('.header-white .logo img').attr('src', '/assets/images/logo_b.png');
     $('.header-white .navbar-menu-item a').css({
         "color": "var(--text-dark)"
     });
@@ -47,7 +47,7 @@ $(() => {
         change: function (event) {
             if (event.target.files.length > 0) {
                 let src = URL.createObjectURL(event.target.files[0]);
-                $('#cover-img').attr('src', src);
+                $('#coverImg').attr('src', src);
             }
         }
     });

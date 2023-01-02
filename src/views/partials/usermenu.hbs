@@ -2,10 +2,10 @@
     <div class="menu-header">
         <div class="user">
             <a href="/profile"><img
-                    src="https://photo-cms-plo.epicdn.me/w850/Uploaded/2022/vocgmvbg/2022_08_14/phuong-nhi-739.jpeg"></a>
+                    src="{{user.ava}}"></a>
             <div>
-                <h6 class="name">Waldez</h6>
-                <a href="/edit-profile">Edit profile</a>
+                <h6 class="name">{{user.last_name}}</h6>
+                <a href="/site/edit-profile">Edit profile</a>
             </div>
         </div>
         <i class="fa-solid fa-bell fs-4 text-muted"></i>
@@ -24,6 +24,6 @@
         <a href="#"><i class="fa-solid fa-gear"></i>&nbsp; SETTING</a>
     </div>
     <div class="menu-item">
-        <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp; SIGN OUT</a>
+        <a href="/site/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp; SIGN OUT</a>
     </div>
 </div>

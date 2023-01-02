@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema({
     },
     user_id: {
         type: String
+    },
+    ava: {
+        type: String
+    },
+    coverImg: {
+        type: String
     }
 });
 
