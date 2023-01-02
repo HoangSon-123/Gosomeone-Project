@@ -148,6 +148,9 @@ exports.postEditProfile = async (req, res, next) => {
             });
 
             newData.profile.ava = `/images/user/ava_${userID}.jpg`
+        } else if (req.cookies.user.profile.ava) {
+            // Dùng lại hình cũ
+            newData.profile.ava = req.cookies.user.profile.ava
         };
 
         if (req.files.coverImg) {
@@ -163,6 +166,9 @@ exports.postEditProfile = async (req, res, next) => {
 
 
             newData.profile.cover_img = `/images/user/coverImg_${userID}.jpg`
+        } else if (req.cookies.user.profile.cover_img) {
+            // Dùng lại hình cũ
+            newData.profile.cover_img = req.cookies.user.profile.cover_img
         };
 
         if (req.files.imgs) {
@@ -180,6 +186,9 @@ exports.postEditProfile = async (req, res, next) => {
     
                 newData.profile.imgs.push(`images/user/img_${userID}_${index}.jpg`)
             });
+        } else if (req.cookies.user.profile.imgs) {
+            // Dùng lại hình cũ
+            newData.profile.imgs = req.cookies.user.profile.imgs
         }
 
         console.log(newData)
