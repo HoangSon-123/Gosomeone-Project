@@ -26,6 +26,7 @@ router.get('/edit-profile', (req, res) => {
 var epUpload = upload.fields([
     { name: 'coverImg', maxCount: 1 },
     { name: 'ava', maxCount: 1 },
+    { name: 'imgs', maxCount: 10 },
 ]);
 router.post('/edit-profile', epUpload, siteC.postEditProfile);
 

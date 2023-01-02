@@ -1,6 +1,6 @@
 <div class="container-fluid cover-image d-flex align-items-center justify-content-center">
     {{#if user}}
-    <img id="coverImg" src="{{user.coverImg}}">
+    <img id="coverImg" src="{{user.profile.cover_img}}">
     {{else}}
     <img id="coverImg">
     {{/if}}
@@ -15,7 +15,7 @@
     <div class="edit-profile">
         <div class="profile-user">
             {{#if user}}
-            <img id="avatar" src="{{user.ava}}">
+            <img id="avatar" src="{{user.profile.ava}}">
             {{else}}
             <img id="avatar" src="/assets/images/user.png">
             {{/if}}
@@ -31,14 +31,15 @@
             <div class="d-flex flex-column gap-3 mt-4 mb-4">
                 <div class="">
                     <label class="mb-1">Bio</label>
-                    <input id="bio" type="text">
+                    <input id="bio" type="text" name="bio" value="{{user.profile.bio}}">
                 </div>
                 <div class="mt-4">
                     <label class="mb-1">Add Photos</label>
-                    <label id="input-image" class="fw-bold btn" for="input-img"><i
-                            class="fa-solid fa-camera fs-5"></i>&nbsp;UP LOAD</label>
+                    <label id="input-image" class="fw-bold btn" for="input-img">
+                        <i class="fa-solid fa-camera fs-5">&nbsp;UP LOAD</i>
+                    </label>
                     <div id="input-profile-img" class="input-img">
-                        <input id="input-img" accept="image/*" class="d-none" type="file" multiple>
+                        <input id="input-img" accept="image/*" class="d-none" type="file" name="imgs" multiple>
                         <div class="preview d-none d-flex flex-wrap gap-1 border p-3 mt-3 rounded-1 bg-light">
                         </div>
                     </div>
@@ -46,24 +47,24 @@
                 </div>
                 <div class="">
                     <label class="mb-1">Profile descriptions</label>
-                    <textarea name="Text1" cols="40" rows="5"></textarea>
+                    <textarea name="description" cols="40" rows="5">{{user.profile.description}}</textarea>
                 </div>
                 <h6 class="fw-bold mt-4">Questions</h6>
                 <div class="">
                     <label class="mb-1">What have you been doing in the past?</label>
-                    <textarea name="Text1" cols="40" rows="3"></textarea>
+                    <textarea name="q1" cols="40" rows="3">{{user.profile.q1}}</textarea>
                 </div>
                 <div class="">
                     <label class="mb-1">What kind of person you are?</label>
-                    <textarea name="Text1" cols="40" rows="3"></textarea>
+                    <textarea name="q2" cols="40" rows="3">{{user.profile.q2}}</textarea>
                 </div>
                 <div class="">
                     <label class="mb-1">What is your favorite?</label>
-                    <textarea name="Text1" cols="40" rows="3"></textarea>
+                    <textarea name="q3" cols="40" rows="3">{{user.profile.q3}}</textarea>
                 </div>
                 <div class="">
                     <label class="mb-1">Your Travel Experience?</label>
-                    <textarea name="Text1" cols="40" rows="3"></textarea>
+                    <textarea name="q4" cols="40" rows="3">{{user.profile.q4}}</textarea>
                 </div>
                 <button class="btn-gradient-info d-block m-auto" type="submit">SAVE PROFILE</button>
             </div>
