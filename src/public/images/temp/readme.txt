@@ -1,1 +1,0 @@
-Là thư mục chứa file tạm
