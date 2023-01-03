@@ -131,6 +131,7 @@ exports.postLogout = (req, res, next) => {
 exports.postEditProfile = async (req, res, next) => {
     try {
         const userID = req.cookies.user._id;
+        const dir = `/images/user/${userID}/`;
 
         var newData = {
             profile: req.body
@@ -138,35 +139,18 @@ exports.postEditProfile = async (req, res, next) => {
 
         if (req.files.ava) {
             const ava = req.files.ava[0];
-            const temppath = ava.path;
-            const newpath = path.normalize(__dirname + `/../public/images/user/ava_${userID}.jpg`);
-            console.log("Avatar sẽ được lưu tại " + newpath);
-
-            // Lưu hình đại diện
-            fs.rename(temppath, newpath, function (err) {
-                if (err) next(err);
-            });
-
-            newData.profile.ava = `/images/user/ava_${userID}.jpg`
-        } else if (req.cookies.user.profile.ava) {
+            newData.profile.ava = dir + ava.filename
+        } 
+        else if (req.cookies.user.profile) {
             // Dùng lại hình cũ
             newData.profile.ava = req.cookies.user.profile.ava
         };
 
         if (req.files.coverImg) {
             const coverImg = req.files.coverImg[0];
-            const temppath = coverImg.path;
-            const newpath = path.normalize(__dirname + `/../public/images/user/coverImg_${userID}.jpg`);
-            console.log("Ảnh bìa sẽ được lưu tại " + newpath);
-
-            // Lưu hình bìa
-            fs.rename(temppath, newpath, function (err) {
-                if (err) next(err);
-            });
-
-
-            newData.profile.cover_img = `/images/user/coverImg_${userID}.jpg`
-        } else if (req.cookies.user.profile.cover_img) {
+            newData.profile.cover_img = dir + coverImg.filename
+        } 
+        else if (req.cookies.user.profile) {
             // Dùng lại hình cũ
             newData.profile.cover_img = req.cookies.user.profile.cover_img
         };
@@ -175,18 +159,10 @@ exports.postEditProfile = async (req, res, next) => {
             newData.profile.imgs = [];
 
             (req.files.imgs).forEach((img, index) => {
-                const temppath = img.path;
-                const newpath = path.normalize(__dirname + `/../public/images/user/img_${userID}_${index}.jpg`);
-                console.log("Ảnh khác sẽ được lưu tại " + newpath);
-    
-                // Lưu hình khác
-                fs.rename(temppath, newpath, function (err) {
-                    if (err) next(err);
-                });
-    
-                newData.profile.imgs.push(`images/user/img_${userID}_${index}.jpg`)
+                newData.profile.imgs.push(dir + img.filename)
             });
-        } else if (req.cookies.user.profile.imgs) {
+        } 
+        else if (req.cookies.user.profile) {
             // Dùng lại hình cũ
             newData.profile.imgs = req.cookies.user.profile.imgs
         }
