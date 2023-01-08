@@ -22,6 +22,13 @@ router.get('/edit-profile', (req, res) => {
     });
 });
 
+router.get('/personal-info', (req, res) => {
+    res.render('personalinfo', {
+        user: req.cookies.user
+    });
+});
+
+
 var epUpload = imageUpload.fields([
     { name: 'coverImg', maxCount: 1 },
     { name: 'ava', maxCount: 1 },
