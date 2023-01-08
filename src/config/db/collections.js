@@ -48,62 +48,39 @@ const userSchema = new mongoose.Schema({
     profile:        profileSchema
 });
 
-const assess = new mongoose.Schema({
-    user_id: {
-        type: String,
-        require: true
-    },
-    rating: {
-        type: Number
-    },
-    review: {
-        type: String
-    }
+const itinerarySchema = new mongoose.Schema({
+    no:     Number,
+    img:    String,
+    content:String
+});
+
+const tripIncludeSchema = new mongoose.Schema({
+    accommodation:  Boolean,
+    ticket:         Boolean,
+    transportation: Boolean
 });
 
 const tripSchema = new mongoose.Schema({
-    condition: {
-        type: Number,
-        required: true
-    }, 
-    name: {
-        type: String,
-        required: true
-    },
-    start_day: {
-        type: Date,
-        required: true
-    },
-    end_day: {
-        type: Date,
-        required: true
-    },
-    location: {
-        type: String,
-        required: true
-    },
-    organizer_id: {
+    title:          String,
+    imgs:           [String],
+    type:           String,
+    dep_date:       Date,
+    duration:       Number,
+    location:       String,
+    price:          Number,
+    description:    String,
+    host: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+        ref: "User"
     }, 
-    participants_id: [{
+    total_tripmates:Number,
+    tripmates: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "User"
     }],
-    price: {
-        type: Number
-    },
-    description: [{
-        type: String
-    }],
-    picture: {
-        type: String,
-        required: true
-    },
-    assess: [{
-        type: assess
-    }]
+    stop:           Number,
+    itinerary:      [itinerarySchema],
+    include:        tripIncludeSchema
 
 });
 

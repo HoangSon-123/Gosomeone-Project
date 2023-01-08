@@ -3,18 +3,19 @@
         <div id="trip-imgs" class="carousel slide" data-bs-ride="carousel">
             <div class="d-flex bg-dark">
                 <div id="prev-item" class="flex-fill"
-                    style="background-image: url('https://ik.imagekit.io/tvlk/blog/2022/09/du-lich-ha-long-2.jpeg');">
+                    style="background-image: url('{{trip.img.[0]}}');">
                 </div>
                 <div class="carousel-inner container-lg p-0">
+                    
                     <div class="carousel-item active">
-                        <img src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/08/hoi-an-quang-nam-vntrip-1.jpg"
+                        <img src="{{trip.img.[0]}}"
                             class="viewable-img d-block" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/assets/images/homepage-background.jpg" class="d-block viewable-img" alt="...">
+                        <img src="{{trip.img.[1]}}" class="d-block viewable-img" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://ik.imagekit.io/tvlk/blog/2022/09/du-lich-ha-long-2.jpeg"
+                        <img src="{{trip.img.[2]}}"
                             class="d-block viewable-img" alt="...">
                     </div>
                 </div>
@@ -47,7 +48,7 @@
         <div class="row m-0 gx-4">
             <div class="col-8">
                 <div class="d-flex flex-column gap-4">
-                    <h3 class="fw-bolder">Dubai Vacation - Yacht 🛥 Party 🎉 and Desert 🐪</h3>
+                    <h3 class="fw-bolder">{{trip.title}}</h3>
                     <div class="d-flex align-items-center gap-2">
                         <span><i>Hosted by</i></span>
                         <div class="user">
@@ -62,15 +63,15 @@
                     <div class="d-flex gap-5 py-3">
                         <div>
                             <i class="fa-solid fa-clock fs-5 text-info"></i>&nbsp;
-                            <span class="text-muted">7 days</span>
+                            <span class="text-muted">{{trip.duration}} days</span>
                         </div>
                         <div>
                             <i class="fa-solid fa-flag fs-5 text-info"></i>&nbsp;
-                            <span class="text-muted">3 stops</span>
+                            <span class="text-muted">{{trip.stop}} stops</span>
                         </div>
                         <div>
                             <i class="fa-solid fa-user fs-5 text-info"></i>&nbsp;
-                            <span class="text-muted">6 mates</span>
+                            <span class="text-muted">{{trip.total_tripmates}} mates</span>
                         </div>
                         <div>
                             <i class="fa-solid fa-location-dot fs-5 text-info"></i>&nbsp;
@@ -79,15 +80,7 @@
                     </div>
                     <p class="text-content">
                         <b>Are you ready for a very special vacation?</b><br />
-                        This trip is perfect for everyone who wants to experience the glam of Dubai but doesn't
-                        want to spend too much money.<br /><br />
-
-                        We will explore old and new Dubai, experience the amazing nightlife and all the crazy
-                        things Dubai has to offer, but also learn something about the history - the perfect mix
-                        :)<br />
-                        Another special thing we will do is a day trip to the desert, where we will do
-                        activities like dune bashing or quad driving and have dinner while watching a bellydance
-                        show.
+                        {{trip.description}}
                     </p>
                     <h6 class="text-uppercase fw-bold">meet your trip leader</h6>
                     <div class="border">
@@ -151,45 +144,23 @@
                     </div>
                     <h6 class="text-uppercase fw-bold mt-3">TRIP ITINERARY</h6>
                     <div class="d-flex flex-column gap-5">
+                        {{#each trip.itinerary}}
                         <div class="location d-flex flex-column gap-3">
                             <div class="d-flex align-items-center gap-3">
-                                <div class="location-no">1</div>
+                                <div class="location-no">{{no}}</div>
                                 <div class="location-name">
                                     <i class="fa-solid fa-location-dot"></i>&nbsp;
-                                    <span class="fw-bolder fs-5">Dubai</span>
+                                    <span class="fw-bolder fs-5">Địa điểm {{@index}}</span>
                                 </div>
                             </div>
                             <div class="ps-5 d-flex flex-column gap-3">
-                                <img class="d-block viewable-img" src="/assets/images/homepage-background.jpg">
+                                <img class="d-block viewable-img" src="{{img}}">
                                 <p class="text-content fs-7">
-                                    On our first day, we will go to see Burj Khalifa in the evening and watch the
-                                    light show at the Dubai Fountain. We will spend some time at the Dubai Mall (the
-                                    biggest in the world) and there are plenty of things to see.<br />
-                                    People who arrive earlier that day will have more time for some extra activities
-                                    or simply spend some time at the pool.
+                                    {{content}}
                                 </p>
                             </div>
                         </div>
-                        <div class="location d-flex flex-column gap-3">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="location-no">2</div>
-                                <div class="location-name">
-                                    <i class="fa-solid fa-location-dot"></i>&nbsp;
-                                    <span class="fw-bolder fs-5">Desert Safari</span>
-                                </div>
-                            </div>
-                            <div class="ps-5 d-flex flex-column gap-3">
-                                <img class="d-block viewable-img"
-                                    src="https://travel.mqcdn.com/mapquest/travel/wp-content/uploads/2020/06/GettyImages-1156938132-800x450.jpg">
-                                <p class="text-content fs-7">
-                                    On our first day, we will go to see Burj Khalifa in the evening and watch the
-                                    light show at the Dubai Fountain. We will spend some time at the Dubai Mall (the
-                                    biggest in the world) and there are plenty of things to see.<br />
-                                    People who arrive earlier that day will have more time for some extra activities
-                                    or simply spend some time at the pool.
-                                </p>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                     <div>
                         <h6 class="text-uppercase fw-bold mb-4">what was included</h6>
@@ -204,7 +175,7 @@
                             <div class="included-item">
                                 <i class="fa-solid fa-ticket"></i>
                                 <div class="d-flex flex-column justify-content-between">
-                                    <b class="fs-7">7 days trip</b>
+                                    <b class="fs-7">{{trip.duration}} days trip</b>
                                 </div>
                             </div>
                             <div class="included-item">
