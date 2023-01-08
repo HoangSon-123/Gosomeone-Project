@@ -83,88 +83,35 @@
             </div>
             <div class="col-8">
                 <div class="mb-2 d-flex gap-1">
-                    <h4 class="text-info fw-bold">3</h4>
-                    <h4 class="fw-bold">Trips</h4>
+                    <h4 class="text-info fw-bold">{{trip.length}}</h4>
+                    <h4 class="fw-bold">Trip(s)</h4>
                 </div>
                 <div class="row row-cols-3 g-2">
+                    {{#each trip}}
                     <div class="col">
                         <div class="card">
                             <img class="card-img-top"
                                 src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
                             <div class="card-body">
-                                <div class="destination"><i class="fa-solid fa-location-dot"></i>&nbsp;Destination
+                                <div class="destination"><i class="fa-solid fa-location-dot"></i>&nbsp;{{location}}
                                 </div>
-                                <a class="card-title">Trips title title title title title title title title title
-                                    title title title title title title title </a>
+                                <a class="card-title">{{title}}</a>
                                 <div class="date">
                                     <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
-                                        22 DEC 22</span>
-                                    <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; 7 Days</span>
+                                        {{shortDate dep_date}}</span>
+                                    <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; {{duration}} Days</span>
                                 </div>
                                 <hr />
                                 <div class="price d-flex flex-column">
                                     <div>
-                                        <span class="cost">1.000.000</span>
+                                        <span class="cost">{{price}}</span>
                                         <span class="currency">VND</span>
                                     </div>
                                     <div class="unit">per tripmate</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-img-top"
-                                src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
-                            <div class="card-body">
-                                <div class="destination">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <span>Destination</span>
-                                </div>
-                                <a class="card-title">Trips title title title title title title title title title
-                                    title title title title title title title </a>
-                                <div class="date">
-                                    <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
-                                        22 DEC 22</span>
-                                    <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; 7 Days</span>
-                                </div>
-                                <hr />
-                                <div class="price d-flex flex-column">
-                                    <div>
-                                        <span class="cost">1.000.000</span>
-                                        <span class="currency">VND</span>
-                                    </div>
-                                    <div class="unit">per tripmate</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-img-top"
-                                src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
-                            <div class="card-body">
-                                <div class="destination">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <span>Destination</span>
-                                </div>
-                                <a class="card-title">Trips title title title title title title title title title
-                                    title title title title title title title </a>
-                                <div class="date">
-                                    <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
-                                        22 DEC 22</span>
-                                    <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; 7 Days</span>
-                                </div>
-                                <hr />
-                                <div class="price d-flex flex-column">
-                                    <div>
-                                        <span class="cost">1.000.000</span>
-                                        <span class="currency">VND</span>
-                                    </div>
-                                    <div class="unit">per tripmate</div>
-                                </div>
-                            </div>
-                        </div>
+                    {{/each}}
                     </div>
                 </div>
             </div>
