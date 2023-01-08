@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser')
+const hbs_helper = require("./helpers/hbs_helper")
 
 // Dùng file .env
 dotenv.config({ path: __dirname + '/.env' });
@@ -32,7 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //cookie
 app.use(cookieParser());
 
-app.engine('hbs', handlebars.engine({extname: 'hbs'}));
+app.engine('hbs', handlebars.engine({
+    extname: 'hbs',
+    helpers: hbs_helper
+}));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
