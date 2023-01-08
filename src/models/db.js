@@ -16,7 +16,7 @@ const add = async (tableName, entity) => {
 const getAll = async tableName => {
     try {
         Model = mongoose.model(tableName);
-        const result = await Model.find().lean();
+        const result = await Model.find();
         return result;
     } catch (err) {
         console.log(err);
@@ -56,7 +56,29 @@ const deleteOne = async (tableName, fieldName, fieldValue) => {
     }
 };
 
+const getAllLean = async tableName => {
+    try {
+        Model = mongoose.model(tableName);
+        const result = await Model.find().lean();
+        return result;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const getOneLean = async (tableName, fieldName, fieldValue) => {
+    try {
+        Model = mongoose.model(tableName);
+        var filter = { [fieldName]: fieldValue};
+        const result = await Model.findOne(filter).lean();
+        return result;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 
 module.exports = {
-    add, getAll, getOne, updateOne, deleteOne
+    add, getAll, getOne, updateOne, deleteOne,
+    getAllLean, getOneLean
 }
