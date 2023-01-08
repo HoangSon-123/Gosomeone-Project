@@ -1,0 +1,342 @@
+<div id="create-trip" class="py-5" style="background-color: #f8f4f4;">
+    <!-- <div id="create-trip" class="py-5" style="background-color: #000000"> -->
+    <div class="container-md p-0">
+        <form>
+            <div class="d-flex flex-column gap-4">
+                <h5 class="fw-bold">Let's get started!</h5>
+                <h6 class="fw-bold fs-7">Departure date</h6>
+                <input name="dep_date" type="date" class="form-control">
+                <div>
+                    <hr>
+                    <h6 class="fw-bold mb-3 fs-7">Pick categories</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <div class="input-trip-style">
+                            <label class="bg-light rounded-1 p-2 d-flex align-item-center gap-2 text-muted border">
+                                <input type="checkbox" class="d-none" name="category" name="category" value="food">
+                                <i class="fa-solid fa-utensils fs-5"></i>
+                                <span>Food</span>
+                            </label>
+                        </div>
+                        <div class="input-trip-style">
+                            <label class="bg-light rounded-1 p-2 d-flex align-item-center gap-2 text-muted border">
+                                <input type="checkbox" class="d-none" name="category" value="culture">
+                                <i class="fa-solid fa-torii-gate fs-5"></i>
+                                <span>Culture</span>
+                            </label>
+                        </div>
+                        <div class="input-trip-style">
+                            <label class="bg-light rounded-1 p-2 d-flex align-item-center gap-2 text-muted border">
+                                <input type="checkbox" class="d-none" name="category" value="nature">
+                                <i class="fa-solid fa-tree fs-5"></i>
+                                <span>Nature</span>
+                            </label>
+                        </div>
+                        <div class="input-trip-style">
+                            <label class="bg-light rounded-1 p-2 d-flex align-item-center gap-2 text-muted border">
+                                <input type="checkbox" class="d-none" name="category" value="city">
+                                <i class="fa-solid fa-city fs-5"></i>
+                                <span>City</span>
+                            </label>
+                        </div>
+                        <div class="input-trip-style">
+                            <label class="bg-light rounded-1 p-2 d-flex align-item-center gap-2 text-muted border">
+                                <input type="checkbox" class="d-none" name="category" value="backpacking">
+                                <i class="fa-solid fa-suitcase-rolling fs-5"></i>
+                                <span>Backpacking</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr>
+                    <h6 class="fw-bold mb-3 fs-7">Trip type</h6>
+                    <div class="row row-cols-2 g-3">
+                        <div class="col">
+                            <label class="input-trip-type bg-light p-3 rounded d-flex flex-column gap-3"
+                                for="guided-trip">
+                                <input type="radio" name="type" class="d-none" id="guided-trip" value="guided" checked>
+                                <div class="radio-btn">
+                                    <div class="radio-container">
+                                        <div class="cell"></div>
+                                    </div>
+                                    <span class="fw-bold fs-7">Guided</span>
+                                </div>
+                                <span class="fs-8">You’re taking the lead and making all arrangements for those
+                                    wanting to join.</span>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="input-trip-type bg-light p-3 rounded d-flex flex-column gap-3"
+                                for="coworking-trip">
+                                <input type="radio" name="type" class="d-none" id="coworking-trip" value="coworking">
+                                <div class="radio-btn">
+                                    <div class="radio-container">
+                                        <div class="cell"></div>
+                                    </div>
+                                    <span class="fw-bold fs-7">Coworking</span>
+                                </div>
+                                <span class="fs-8">Sharing accommodation and working space with other remote
+                                    professionals.</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="m-5 p-2"></div>
+            <!--  -->
+            <div class="d-flex flex-column gap-4 mb-5">
+                <h5 class="fw-bold">Inspire others to join your trip</h5>
+                <div>
+                    <h6 class="fs-7 fw-bold">Trip name</h6>
+                    <input type="text" class="p-2 px-3 fs-7 border w-100" placeholder="e.g. Travel.." name="title">
+                </div>
+                <div>
+                    <h6 class="fs-7 fw-bold">Trip Description</h6>
+                    <textarea name="description" class="mb-1" cols="40" rows="10"
+                        placeholder="Detail description of the trip"></textarea>
+                    <div class="d-flex justify-content-between">
+                        <span class="fs-8 text-secondary">What experiences and places make your trip?</span>
+                        <span class="fs-8 text-secondary">Minimum 800 characters</span>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="fs-7 fw-bold">Short Description</h6>
+                    <textarea name="short_des" col="40" rows="3" class="mb-1"
+                        placeholder="Write the snippets of the trip"></textarea>
+                    <div class="d-flex justify-content-between">
+                        <span class="fs-8 text-secondary">Content that will be displayed as a snippet on search
+                            results page</span>
+                        <span class="fs-8 text-secondary">Maximum 160 characters</span>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="fs-7 fw-bold">Choose the type of accommodation</h6>
+                    <div class="row row-cols-2">
+                        <div class="col d-flex flex-column gap-3">
+                            <label class="check-container">
+                                <input type="checkbox" name="accommodation" value="hotel">
+                                <div class="checkmark bg-white">
+                                    <i class="fa-solid fa-check text-info fs-4"></i>
+                                </div>
+                                <span class="fs-6">Hotel</span>
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" name="accommodation" value="homestay">
+                                <div class="checkmark bg-white">
+                                    <i class="fa-solid fa-check text-info fs-4"></i>
+                                </div>
+                                <span class="fs-6">Homestay</span>
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" name="accommodation" value="camping">
+                                <div class="checkmark bg-white">
+                                    <i class="fa-solid fa-check text-info fs-4"></i>
+                                </div>
+                                <span class="fs-6">Camping</span>
+                            </label>
+                        </div>
+                        <div class="col d-flex flex-column gap-3">
+                            <label class="check-container">
+                                <input type="checkbox" name="accommodation" value="hostel">
+                                <div class="checkmark bg-white">
+                                    <i class="fa-solid fa-check text-info fs-4"></i>
+                                </div>
+                                <span class="fs-6">Hostel</span>
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" name="accommodation" value="apartment">
+                                <div class="checkmark bg-white">
+                                    <i class="fa-solid fa-check text-info fs-4"></i>
+                                </div>
+                                <span class="fs-6">Apartment</span>
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" name="accommodation" value="other">
+                                <div class="checkmark bg-white">
+                                    <i class="fa-solid fa-check text-info fs-4"></i>
+                                </div>
+                                <span class="fs-6">Other</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-5">
+                <label class="d-block btn border border-2 border-dark rounded-1">
+                    <input name="img" id="input-trip-imgs" type="file" accept="image/*" class="d-none" multiple>
+                    <div class="fs-5 fw-bold">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>UPLOAD</span>
+                    </div>
+                </label>
+                <small class="text-secondary mt-2 mb-4 d-block">Add at least 3 highlight photos for your trip.</small>
+                <div id="trip-imgs" class="carousel slide d-none" data-bs-ride="carousel">
+                    <div class="d-flex bg-dark">
+                        <div class="carousel-inner">
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#trip-imgs"
+                        data-bs-slide="prev">
+                        <i class="fa-solid fa-circle-chevron-left fs-2"></i>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#trip-imgs"
+                        data-bs-slide="next">
+                        <i class="fa-solid fa-circle-chevron-right fs-2"></i>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+    </div>
+    <div id="stops" class="container-md p-0 d-flex flex-column gap-5">
+        <div id="stop-1" class="stop-card bg-light rounded">
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <div>
+                    <h5 class="fw-bold mb-1">Add image for stop here</h5>
+                    <span class="text-secondary fs-7">Make sure to upload relevent, high quality
+                        image.</span>
+                </div>
+                <div>
+                    <label class="btn btn-outline-dark d-flex align-item-center gap-2">
+                        <input id="input-stop-img-1" class="d-none input-stop-img" type="file" name="stop_image"
+                            required>
+                        <i class="fa-regular fa-image fs-4"></i>
+                        <span class="fw-bold">ADD</span>
+                    </label>
+                </div>
+            </div>
+            <div class="stop-img rounded-top d-none">
+                <div class="w-100 h-100 d-flex align-items-end p-3">
+                    <div>
+                        <label for="input-stop-img-1" class="btn btn-light">
+                            <i class="fa-regular fa-image fs-4"></i>
+                            <span class="fw-bold">Change</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <h6 class="stop-number">1</h6>
+                    <h5 class="stop-location" class="fw-bold">Stop 1</h5>
+                </div>
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="form-floating flex-fill">
+                        <input id="input-location-1" type="text" class="input-location form-control">
+                        <label>Location</label>
+                    </div>
+                    <div class="input-day d-flex gap-1 align-items-center">
+                        <div class="d-flex flex-column">
+                            <div class="increase text-secondary border btn btn-sm" data-bs-target="#stop-day-1">
+                                <i class="fa-solid fa-caret-up"></i>
+                            </div>
+                            <div class="decrease text-secondary border btn btn-sm" data-bs-target="#stop-day-1">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </div>
+                        </div>
+                        <div class="border p-2 px-4 fs-3 fw-bold rounded-1">
+                            <input id="stop-day-1" type="number" class="text-center" name="total_days" value="1">
+                            <span class="fw-bold fs-5">day(s)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-1">
+                    <textarea name="description" class="form-control h-100" cols="40" rows="5"></textarea>
+                    <label>Tell us more</label>
+                </div>
+                <span class="text-secondary fs-7">What do you do / visit in this place</span>
+            </div>
+        </div>
+        <button id="add-stop" type="button" class="bg-light text-info border rounded-1">
+            <i class="fa-solid fa-circle-plus"></i> ADD A STOP
+        </button>
+    </div>
+    <!--  -->
+    <div class="m-5 p-2"></div>
+    <!--  -->
+    <div class="trip-information container-md p-0">
+        <div class="d-flex flex-column gap-4">
+            <h5 class="fw-bold mb-3">Trip information</h5>
+            <div class="row row-cols-2">
+                <div class="col">
+                    <h6 class="fs-7 fw-bold mb-3">Total tripmates</h6>
+                    <div id="input-tripmates" class="d-flex align-items-center gap-2">
+                        <div>
+                            <div class="increase text-secondary border btn btn-sm d-block bg-light"
+                                data-bs-target="#total-tripmates">
+                                <i class="fa-solid fa-caret-up"></i>
+                            </div>
+                            <div class="decrease text-secondary border btn btn-sm d-block bg-light"
+                                data-bs-target="#total-tripmates">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </div>
+                        </div>
+                        <input id="total-tripmates" name="total-tripmates" type="number"
+                            class="border rounded-1 text-center bg-light fw-bold fs-3 p-2 d-block w-50" value="1">
+                    </div>
+                </div>
+                <div class="col">
+                    <h6 class="fs-7 fw-bold mb-3">Price</h6>
+                    <div id="input-price" class="d-flex align-items-center gap-2">
+                        <div>
+                            <div class="increase text-secondary border btn btn-sm d-block bg-light"
+                                data-bs-target="#price">
+                                <i class="fa-solid fa-caret-up"></i>
+                            </div>
+                            <div class="decrease text-secondary border btn btn-sm d-block bg-light"
+                                data-bs-target="#price">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-1 h-100 align-items-center">
+                            <input id="price" name="price" type="number"
+                                class="border rounded-1 text-center bg-light fw-bold fs-3 p-2 d-block w-50" value="1000000">
+                            <span>VND<span>/tripmate</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="included">
+                <h6 class="fs-7 fw-bold mb-3">What was included in your trip?</h6>
+                <div class="row row-cols-2">
+                    <div class="col d-flex flex-column gap-3">
+                        <label class="check-container">
+                            <input type="checkbox" name="included" value="accommodation">
+                            <div class="checkmark bg-white">
+                                <i class="fa-solid fa-check text-info fs-4"></i>
+                            </div>
+                            <span class="fs-6">Accommodation</span>
+                        </label>
+                        <label class="check-container">
+                            <input type="checkbox" name="included" value="ticket">
+                            <div class="checkmark bg-white">
+                                <i class="fa-solid fa-check text-info fs-4"></i>
+                            </div>
+                            <span class="fs-6"><span id="total-days" class="fw-bold">1</span> day(s) trip</span>
+                        </label>
+                    </div>
+                    <div class="col d-flex flex-column gap-3">
+                        <label class="check-container">
+                            <input type="checkbox" name="included" value="food">
+                            <div class="checkmark bg-white">
+                                <i class="fa-solid fa-check text-info fs-4"></i>
+                            </div>
+                            <span class="fs-6">Food</span>
+                        </label>
+                        <label class="check-container">
+                            <input type="checkbox" name="included" value="transportation">
+                            <div class="checkmark bg-white">
+                                <i class="fa-solid fa-check text-info fs-4"></i>
+                            </div>
+                            <span class="fs-6">Transportation</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn-gradient-info my-5 d-block w-100">SAVE TRIP</button>
+    </div>
+    </form>
+</div>
