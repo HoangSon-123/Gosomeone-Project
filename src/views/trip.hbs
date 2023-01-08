@@ -6,18 +6,11 @@
                     style="background-image: url('{{trip.img.[0]}}');">
                 </div>
                 <div class="carousel-inner container-lg p-0">
-                    
-                    <div class="carousel-item active">
-                        <img src="{{trip.img.[0]}}"
-                            class="viewable-img d-block" alt="...">
+                    {{#each trip.img}}
+                    <div class="carousel-item {{#ifIsZero @index}}active{{/ifIsZero}}">
+                        <img src="{{ this }}" class="viewable-img d-block" alt="...">
                     </div>
-                    <div class="carousel-item">
-                        <img src="{{trip.img.[1]}}" class="d-block viewable-img" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{trip.img.[2]}}"
-                            class="d-block viewable-img" alt="...">
-                    </div>
+                    {{/each}}
                 </div>
                 <div id="next-item" class="flex-fill" style="background-image: url('/assets/homepage-background.jpg');">
                 </div>
@@ -53,10 +46,15 @@
                         <span><i>Hosted by</i></span>
                         <div class="user">
                             <a href="#">
-                                <img src="assets/user.png">
+                                {{#if host.profile.ava}}
+                                <img src="{{host.profile.ava}}" width="50" height="50">
+                                {{else}}
+                                <img src="assets/images/user.png">
+                                {{/if}}
+                                
                             </a>
                             <div class="my-auto">
-                                <h6 class="name m-0">Waldez</h6>
+                                <h6 class="name m-0">{{host.first_name}}</h6>
                             </div>
                         </div>
                     </div>
@@ -87,9 +85,13 @@
                         <div class="d-flex justify-content-between p-4">
                             <a href="#">
                                 <div class="trip-leader d-flex gap-3 align-items-center">
+                                    {{#if host.profile.ava}}
+                                    <img src="{{host.profile.ava}}">
+                                    {{else}}
                                     <img src="/assets/images/user.png">
+                                    {{/if}}
                                     <div>
-                                        <h6 class="fw-bold m-0 text-dark">Waldez</h6>
+                                        <h6 class="fw-bold m-0 text-dark">{{host.first_name}}</h6>
                                         <span class="text-muted fs-7">View profile</span>
                                     </div>
                                 </div>
@@ -106,41 +108,23 @@
                         <hr class="m-0">
                         <div class="bg-primary bg-opacity-25 px-4 py-2 text-primary fs-8">
                             <i class="fa-solid fa-message"></i>&nbsp;
-                            <span>You can chat with Waldez after booking you spot</span>
+                            <span>You can chat with {{host.first_name}} after booking you spot</span>
                         </div>
                     </div>
                     <h6 class="text-uppercase fw-bold mt-3">Your tripmate(s)</h6>
                     <div class="d-flex gap-4 border p-4">
+                        {{#each tripmate}}
                         <a href="#">
                             <div class="tripmate">
+                                {{#if profile.ava}}
+                                <img class="d-block" src="{{profile.ava}}">
+                                {{else}}
                                 <img class="d-block" src="/assets/images/user.png">
-                                <h6 class="fw-bold mt-2 text-dark">Hien Thai</h6>
+                                {{/if}}
+                                <h6 class="fw-bold mt-2 text-dark">{{first_name}}</h6>
                             </div>
                         </a>
-                        <a href="#">
-                            <div class="tripmate">
-                                <img class="d-block" src="/assets/images/user.png">
-                                <h6 class="fw-bold mt-2 text-dark">Pham Son</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="tripmate">
-                                <img class="d-block" src="/assets/images/user.png">
-                                <h6 class="fw-bold mt-2 text-dark">Hai</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="tripmate">
-                                <img class="d-block" src="/assets/images/user.png">
-                                <h6 class="fw-bold mt-2 text-dark">Hieu</h6>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="tripmate">
-                                <img class="d-block" src="/assets/images/user.png">
-                                <h6 class="fw-bold mt-2 text-dark">Duong</h6>
-                            </div>
-                        </a>
+                        {{/each}}
                     </div>
                     <h6 class="text-uppercase fw-bold mt-3">TRIP ITINERARY</h6>
                     <div class="d-flex flex-column gap-5">
@@ -197,9 +181,9 @@
                 <div class="border rounded-1">
                     <div class="text-secondary p-3">
                         <i class="fa-regular fa-calendar"></i>&nbsp;
-                        <span>22 DEC 22</span>&nbsp;
+                        <span>{{shortDate trip.dep_date}}</span>&nbsp;
                         <i class="fa-solid fa-arrow-right"></i>&nbsp;
-                        <span>28 DEC 22</span>
+                        <span>{{endDate_short trip.dep_date trip.duration}}</span>
                     </div>
                     <hr class="m-0">
                     <div class="text-primary fw-bold p-3">
@@ -239,7 +223,7 @@
                         <i class="fa-solid fa-arrows-rotate"></i>&nbsp;
                         <span class="fw-bold">7 Days Free Cancellation</span><br>
                         <span class="text-dark-50">
-                            <small>You'll only be charged when Waldez appcepts the booking.</small>
+                            <small>You'll only be charged when {{host.first_name}} appcepts the booking.</small>
                         </span>
                     </div>
                 </div>

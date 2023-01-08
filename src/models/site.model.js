@@ -19,5 +19,8 @@ module.exports = {
         const rs = await db.updateOne(tableName, fieldName, fieldValue, newData);
         return rs;
     },
-
+    selectLean: async (fieldName,fieldValue) => {
+        const rs = await db.getOneLean(tableName, fieldName, fieldValue);
+        return rs;
+    },
 };
