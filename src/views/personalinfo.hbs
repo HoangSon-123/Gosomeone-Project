@@ -8,15 +8,15 @@
                 <div class="d-flex flex-column gap-3">
                     <div>
                         <label class="mb-2">First name</label>
-                        <input type="text" class="form-control rounded-1 p-2 fs-7">
+                        <input type="text" class="form-control rounded-1 p-2 fs-7" value="{{user.first_name}}">
                     </div>
                     <div>
                         <label class="mb-2">Last name</label>
-                        <input type="text" class="form-control rounded-1 p-2 fs-7">
+                        <input type="text" class="form-control rounded-1 p-2 fs-7" value="{{user.last_name}}">
                     </div>
                     <div>
                         <label class="mb-2">Date of birth</label>
-                        <input type="date" class="form-control rounded-1 p-2 fs-7">
+                        <input type="date" class="form-control rounded-1 p-2 fs-7" value="{{dob_short user}}">
                     </div>
                 </div>
                 <div>
@@ -41,7 +41,7 @@
                             <i class="fa-regular fa-circle-check fs-2 text-success"></i>&nbsp;
                             <div>
                                 <h6 class="fw-bolder mb-0 text-success">Mobile Number</h6>
-                                <span class="fs-8 text-secondary">Verified mobile number: 012 3456 789</span>
+                                <span class="fs-8 text-secondary">Verified mobile number: {{user.phone_number}}</span>
                             </div>
                         </div>
                         <button type="button" class="text-success fw-bolder fs-6">Change</button>
@@ -52,7 +52,7 @@
                     <div>
                         <label class="mb-2">Email</label>
                         <div class="d-flex align-items-center justify-content-between border">
-                            <input class="p-2 w-100" name="email" type="text" value="waldez@gmail.com" readonly>
+                            <input class="p-2 w-100" name="email" type="text" value="{{user.email}}" readonly>
                             <button type="button" class="fw-bolder text-success">Change</button>
                         </div>
                     </div>
