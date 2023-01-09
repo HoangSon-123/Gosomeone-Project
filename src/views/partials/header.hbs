@@ -13,7 +13,10 @@
             <div class="navbar-menu-item">
                 <a class="text" href="#">how it works</a>
             </div>
-            <img class="user-icon" src="/assets/images/user.png" data-bs-toggle="modal" data-bs-target="#side-menu">
+            <img class="user-icon" 
+                {{#if user.profile.ava}} src="{{user.profile.ava}}" 
+                {{else}} src="/assets/images/user.png" {{/if}} 
+                data-bs-toggle="modal" data-bs-target="#side-menu">
         </div>
     </div>
     <div class="modal" id="side-menu" tabindex="-1">

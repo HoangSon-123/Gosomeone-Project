@@ -2,7 +2,8 @@
     <div class="menu-header">
         <div class="user">
             <a href="/profile"><img
-                    src="{{user.profile.ava}}"></a>
+                {{#if user.profile.ava}} src="{{user.profile.ava}}" 
+                {{else}} src="/assets/images/user.png" {{/if}} ></a>
             <div>
                 <h6 class="name">{{user.first_name}}</h6>
                 <a href="/site/edit-profile">Edit profile</a>
