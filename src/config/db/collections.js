@@ -51,13 +51,15 @@ const userSchema = new mongoose.Schema({
 const itinerarySchema = new mongoose.Schema({
     no:     Number,
     img:    String,
-    content:String
+    content:String,
+    location: String,
 });
 
 const tripIncludeSchema = new mongoose.Schema({
     accommodation:  Boolean,
     ticket:         Boolean,
-    transportation: Boolean
+    transportation: Boolean,
+    food: Boolean,
 });
 
 const tripSchema = new mongoose.Schema({

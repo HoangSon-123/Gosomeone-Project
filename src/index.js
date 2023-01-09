@@ -17,6 +17,7 @@ mongoose.connect((process.env.MONGODB_URL), () => {
 });
 
 const siteR=require('./routers/site.router');
+const tripR=require('./routers/tripSite.router');
 
 
 const app = express();
@@ -41,11 +42,26 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use('/site',siteR);
+app.use('/trip',tripR)
 
 app.get('/', (req, res) => {
-    res.render('home', {
-        user: req.cookies.user
-    });
+    if (req.cookies.token) {
+        res.render('home', {
+            user: req.cookies.user
+        });
+    }else {
+        res.render('home');
+    }
+   
+});
+app.use((req, res, next) => {
+    next(new Error('Page not found'));
+});
+
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode | 500;
+    res.status(statusCode)
+        .send(err.message);
 });
 
 app.listen(port, () => {
