@@ -1,16 +1,17 @@
 module.exports = {
     isoDate: (dbDate) => {
-        return dbDate.substring(0, 10);
+        const string = dbDate.toISOString();
+        return string.substring(0, 10);
     },
     shortDate: (dbDate) => {
-        const yy = dbDate.substring(2, 4);
+        const yy = dbDate.getFullYear();
 
-        const mm = dbDate.substring(5, 7);
+        const mm = dbDate.getMonth() + 1;
         const monthName = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const mmm = monthName[Number(mm)];
 
-        const dd = dbDate.substring(8, 10);
+        const dd = dbDate.getDate();
 
         return `${dd} ${mmm} ${yy}`
     },
@@ -22,25 +23,24 @@ module.exports = {
         }
     },
     endDate: (startDate, duration) => {
-        var result = new Date(startDate)
+        var result = startDate
         result.setDate(result.getDate() + duration - 1)
         return result.toISOString();
     },
     endDate_short: (startDate, duration) => {
         // Calc end date
-        var d = new Date(startDate)
+        var d = startDate
         d.setDate(d.getDate() + duration - 1)
-        d = d.toISOString();
 
         // Convert to dd-mmm-yy form
-        const yy = d.substring(2, 4);
+        const yy = d.getFullYear();
 
-        const mm = d.substring(5, 7);
+        const mm = d.getMonth() + 1;
         const monthName = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const mmm = monthName[Number(mm)];
 
-        const dd = d.substring(8, 10);
+        const dd = d.getDate();
 
         return `${dd} ${mmm} ${yy}`
     }

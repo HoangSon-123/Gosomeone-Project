@@ -91,7 +91,9 @@
                     <div class="col">
                         <div class="card">
                             <img class="card-img-top"
-                                src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg">
+                                {{#if img}}src="{{img.[0]}}"
+                                {{else}}src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg"
+                                {{/if}}>
                             <div class="card-body">
                                 <div class="destination"><i class="fa-solid fa-location-dot"></i>&nbsp;{{location}}
                                 </div>
@@ -111,6 +113,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     {{/each}}
                     </div>
                 </div>

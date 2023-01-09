@@ -24,12 +24,6 @@ router.get('/edit-profile', (req, res) => {
     });
 });
 
-router.get('/personal-info', (req, res) => {
-    res.render('personalinfo', {
-        user: req.cookies.user
-    });
-});
-
 
 var epUpload = imageUpload.fields([
     { name: 'coverImg', maxCount: 1 },
@@ -37,6 +31,16 @@ var epUpload = imageUpload.fields([
     { name: 'imgs', maxCount: 10 },
 ]);
 router.post('/edit-profile', epUpload, siteC.postEditProfile);
+
+router.get('/personal-info', (req, res) => {
+    let user = req.cookies.user;
+    user.dob = new Date(user.dob);
+    res.render('personalinfo', {
+        user: user
+    });
+});
+
+router.post('/personal-info', siteC.editPersonalInfo);
 
 // http://127.0.0.1:3000/site/trip/... => Go to trip site router
 router.use('/trip', tripSiteR);
