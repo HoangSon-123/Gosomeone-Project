@@ -62,7 +62,7 @@ const tripIncludeSchema = new mongoose.Schema({
 
 const tripSchema = new mongoose.Schema({
     title:          String,
-    imgs:           [String],
+    img:           [String],
     type:           String,
     dep_date:       Date,
     duration:       Number,

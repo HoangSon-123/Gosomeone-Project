@@ -35,7 +35,7 @@ module.exports = {
         // Convert to dd-mmm-yy form
         const yy = d.getFullYear();
 
-        const mm = d.getMonth();
+        const mm = d.getMonth() + 1;
         const monthName = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const mmm = monthName[Number(mm)];
