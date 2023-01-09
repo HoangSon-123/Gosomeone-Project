@@ -3,20 +3,20 @@
         <div class="my-4">
             <h3 class="fw-bolder">Personal Information</h3>
         </div>
-        <form>
+        <form method="post">
             <div class="d-flex flex-column gap-5">
                 <div class="d-flex flex-column gap-3">
                     <div>
                         <label class="mb-2">First name</label>
-                        <input type="text" class="form-control rounded-1 p-2 fs-7" value="{{user.first_name}}">
+                        <input type="text" class="form-control rounded-1 p-2 fs-7" name="first_name" value="{{user.first_name}}">
                     </div>
                     <div>
                         <label class="mb-2">Last name</label>
-                        <input type="text" class="form-control rounded-1 p-2 fs-7" value="{{user.last_name}}">
+                        <input type="text" class="form-control rounded-1 p-2 fs-7" name="last_name" value="{{user.last_name}}">
                     </div>
                     <div>
                         <label class="mb-2">Date of birth</label>
-                        <input type="date" class="form-control rounded-1 p-2 fs-7" value="{{isoDate user.dob}}">
+                        <input type="date" class="form-control rounded-1 p-2 fs-7" name="dob" value="{{isoDate user.dob}}">
                     </div>
                 </div>
                 <div>
@@ -52,7 +52,7 @@
                     <div>
                         <label class="mb-2">Email</label>
                         <div class="d-flex align-items-center justify-content-between border">
-                            <input class="p-2 w-100" name="email" type="text" value="{{user.email}}" readonly>
+                            <input class="p-2 w-100" type="text" value="{{user.email}}" readonly>
                             <button type="button" class="fw-bolder text-success">Change</button>
                         </div>
                     </div>

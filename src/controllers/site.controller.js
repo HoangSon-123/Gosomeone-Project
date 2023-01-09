@@ -187,3 +187,40 @@ exports.postEditProfile = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.editPersonalInfo = async (req, res, next) => {
+    try {
+        const userID = req.cookies.user._id;
+        const newData = req.body;
+        console.log(newData)
+
+        // Kiểm tra email có bị thay đổi
+        const currentUser = await siteM.select("_id", userID);
+        if (currentUser.email != newData.email) {
+            // Kiểm tra email đã được sử dụng hay chưa
+            const uDBbyEmail = await siteM.select("email", newData.email);
+
+            if (uDBbyEmail) {
+                return res.render('editprofile', {
+                    errorMessage: 'Email đã được sử dụng'
+                })
+            }
+        }
+
+        // Lưu dữ liệu mới lên db
+        await siteM.update("_id", userID, newData)
+
+        // Sửa cookie
+        const uDB = await siteM.select("_id", userID);
+        uDB.username = undefined;
+        console.log(uDB);
+        res.cookie('user', uDB, {
+            maxAge: 1000 * 60 * 60 * 24 * 10,
+            httpOnly: true
+        })
+
+        res.redirect('/');
+    } catch (error) {
+        next(error);
+    }
+}
