@@ -63,17 +63,34 @@ const tripIncludeSchema = new mongoose.Schema({
 });
 
 const tripSchema = new mongoose.Schema({
-    title:          String,
+    title: {
+        type: String,
+        required: true
+    },
     img:           [String],
-    type:           String,
-    dep_date:       Date,
-    duration:       Number,
+    type: {
+        type: String,
+        default: "guided"
+    },
+    dep_date: {
+        type: Date,
+        required: true
+    },
+    duration: {
+        type: Number,
+        default: 1
+    },
     location:       String,
-    price:          Number,
-    description:    String,
+    price: {
+        type: Number,
+        default: 0
+    },
+    trip_des:    String,
+    short_des:    String,
     host: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        required: true
     }, 
     total_tripmates:Number,
     tripmates: [{
