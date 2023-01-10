@@ -4,51 +4,103 @@
         <div id="route" class="border bg-light rounded-1 mb-4">
             <div class="row rol-cols-2 gx-0">
                 <div class="col">
-                    <button class="d-block w-100 fw-bold active">Pending</button>
+                    <button id="pending-btn" class="d-block w-100 fw-bold active">Pending</button>
                 </div>
                 <div class="col">
-                    <button class="d-block w-100 fw-bold">Created</button>
+                    <button id="created-btn" class="d-block w-100 fw-bold">Created</button>
+                </div>
+                <div class="col">
+                    <button id="joined" class="d-block w-100 fw-bold">Joined</button>
                 </div>
             </div>
         </div>
-        <div class="trip-card rounded-1 bg-light shadow">
-            <div class="d-flex">
-                <a href=""><img class="trip-card-img" src="./assets/homepage-background.jpg"></a>
-                <div class="d-flex flex-column justify-content-between p-3 w-100">
-                    <div class="d-flex flex-column">
-                        <div class="fs-8">
-                            <span class="text-primary">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <span clas="text-uppercase">DA NANG</span>
-                            </span>
-                            <span>12 DAYS</span>
+        <div id="pending-trips" class="d-flex flex-column gap-3 w-100">
+            {{#each pendingtrip}}
+            <div class="trip-card rounded-1 bg-light shadow">
+                <div class="d-flex">
+                    <a href="/trip/show/{{id}}"><img class="trip-card-img" src="{{img}}"></a>
+                    <div class="d-flex flex-column justify-content-between p-3 w-100">
+                        <div class="d-flex flex-column">
+                            <div class="fs-8">
+                                <span class="text-primary">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span clas="text-uppercase">{{location}}</span>
+                                </span>
+                                <span>{{duration}} DAYS</span>
+                            </div>
+                            <h6 class="fw-bold">{{title}}</h6>
+                            <div class="fs-7 text-uppercase">
+                                <span>{{dep_date}}</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                                <span>{{dep_date}}</span>
+                            </div>
                         </div>
-                        <h6 class="fw-bold">
-                            classes can be used to control the vertical gutter widths within a row when
-                        </h6>
-                        <div class="fs-7 text-uppercase">
-                            <span>24 DEC 22</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                            <span>28 JAN 23</span>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
-                        <!-- <div>
+                        <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+                            {{#if requesting}}
+                            <div>
                                 <h6 class="fw-bold text-info text-center fs-8 m-0">REQUESTED</h6>
                                 <small class="text-secondary">Waiting host for replying your request!</small>
-                            </div> -->
-                        <button class="btn-gradient-danger fs-8">PAYMENT CONFIRM</button>
-                        <!-- <button class="btn-gradient-info fs-8">LEAVE A COMMENT</button> -->
-                        <!-- <button class="btn-gradient-info fs-8">JOINED</button> -->
-                        <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-heart-crack"></i>
-                            cancel</button>
-                        <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-message"></i>
-                            Chat</button>
-                        <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-flag"></i>
-                            Report</button>
+                            </div>
+                            <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-heart-crack"></i>
+                                cancel</button>
+                            {{/if}}
+                            {{#if confirming}}
+                            <button id="payment-btn" class="btn-gradient-danger fs-8" data-value="{{id}}">PAYMENT CONFIRM</button>
+                            <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-heart-crack"></i>
+                                cancel</button>
+                            {{/if}}
+                            {{#if finished}}
+                            <button class="btn-gradient-info fs-8">LEAVE A COMMENT</button>
+                            {{/if}}
+                            {{#if joined}}
+                            <button class="btn-gradient-info fs-8">JOINED</button>
+                            <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-heart-crack"></i>
+                                cancel</button>
+                            {{/if}}
+                            <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-message"></i>
+                                Chat</button>
+                            <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-flag"></i>
+                                Report</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{/each}}
+        </div>
+        <div id="created-trips" class="d-flex flex-column gap-3 w-100 d-none">
+            {{#each createdtrip}}
+            <div class="trip-card rounded-1 bg-light shadow">
+                <div class="d-flex">
+                    <a href="/trip/show/{{id}}"><img class="trip-card-img" src="{{img}}"></a>
+                    <div class="d-flex flex-column justify-content-between p-3 w-100">
+                        <div class="d-flex flex-column">
+                            <div class="fs-8">
+                                <span class="text-primary">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span clas="text-uppercase">{{location}}</span>
+                                </span>
+                                <span>{{duration}} DAYS</span>
+                            </div>
+                            <h6 class="fw-bold">{{title}}</h6>
+                            <div class="fs-7 text-uppercase">
+                                <span>{{dep_date}}</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                                <span>{{dep_date}}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+                            <button class="fs-8 text-secondary text-uppercase"><i
+                                    class="fa-solid fa-circle-question"></i>
+                                Q&A</button>
+                            <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-message"></i>
+                                Chat</button>
+                            <button class="fs-8 text-secondary text-uppercase"><i class="fa-solid fa-flag"></i>
+                                remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
         </div>
     </div>
 </div>

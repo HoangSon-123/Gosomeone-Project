@@ -248,4 +248,28 @@ $(() => {
             }
         }
     });
+
+    // my trip
+    
+    $('#route button').on({
+        click: function(event) {
+            $('#route button').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+
+    $('#pending-btn').on({
+        click: function(event) {
+            $('#pending-trips').removeClass('d-none');
+            $('#created-trips').addClass('d-none');
+        }
+    });
+
+    $('#created-btn').on({
+        click: function(event) {
+            $('#created-trips').removeClass('d-none');
+            $('#pending-trips').addClass('d-none');
+        }
+    });
+
 })
