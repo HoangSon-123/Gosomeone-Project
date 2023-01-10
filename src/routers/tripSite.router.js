@@ -21,7 +21,7 @@ var epUpload = imageUpload.fields([
 
 router.post('/:tripID/createdetail', epUpload, tripC.createDetailTrip)
 
-router.get('/:id', tripC.showATrip);
-router.get('/', tripC.showAllTrips);
+router.get('/show/all', tripC.showAllTrips);
+router.get('/show/:id', tripC.showATrip);
 
 module.exports = router;
