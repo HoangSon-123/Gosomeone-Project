@@ -111,11 +111,13 @@ module.exports = {
                 included = req.body.included;
             }
 
+            const tripID = req.params.tripID;
+            
             var imgs = [];
             for (let index = 0; index < req.files.img.length; index++) {
-                imgs[index] = req.files.img[index].originalname;
+            imgs[index] = `/images/trip/${tripID}/${req.files.img[index].filename}`
 
-            }
+        }
 
             var check_stop_img = false;
             if (req.files.stop_image !== undefined) {
@@ -125,12 +127,10 @@ module.exports = {
 
                 var stop_image = [];
                 for (let index = 0; index < req.files.stop_image.length; index++) {
-                    stop_image[index] = req.files.stop_image[index].originalname;
+                    stop_image[index] = `/images/trip/${tripID}/${req.files.stop_image[index].filename}`
 
                 }
             }
-
-            const tripID = req.params.tripID;
 
             var tripDB = {};
             tripDB.img = imgs;
@@ -150,7 +150,7 @@ module.exports = {
                 if (check_stop_img) {
                     var a = {
                         no: index + 1,
-                        img: stop_image[index].originalname,
+                        img: stop_image[index],
                         location: location[index],
                         content: description[index],
                     }
