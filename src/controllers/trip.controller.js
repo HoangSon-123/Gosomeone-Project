@@ -4,7 +4,7 @@ const siteM = require('../models/site.model')
 
 
 module.exports = {
-    showAllTrips: async (req, res, error) => {
+    showAllTrips: async (req, res, next) => {
         // Load all trips from db
         var trips = await tripM.allLean();
 
@@ -14,7 +14,7 @@ module.exports = {
             trip: trips
         });
     },
-    showATrip: async (req, res, error) => {
+    showATrip: async (req, res, next) => {
         // Load a trip from db
         var trip = await tripM.selectLean("_id", req.params.id);
 
@@ -43,7 +43,7 @@ module.exports = {
         }
 
     },
-    createBasicTrip: async (req, res, error) => {
+    createBasicTrip: async (req, res, next) => {
         try {
             const leaderID = req.cookies.user._id;
             const tripTitle = req.body.title;
@@ -63,7 +63,7 @@ module.exports = {
             next(error);
         }
     },
-    createDetailTrip: async (req, res, error) => {
+    createDetailTrip: async (req, res, next) => {
         try {
             console.log('req.body: ',req.body);
             var total_days = null;
