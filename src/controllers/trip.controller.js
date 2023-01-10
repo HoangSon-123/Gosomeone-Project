@@ -30,13 +30,28 @@ module.exports = {
                 tripmates.push(tmp);
             }
 
-            // Render to view
-            res.render('trip', {
-                user: req.cookies.user,
-                trip: trip,
-                host: host,
-                tripmate: tripmates
-            });
+            // Check if user joined the trip
+            const userID = req.cookies.user._id
+            if (trip.host == userID || trip.tripmates.includes(userID)) {
+                // Render to view
+                res.render('trip', {
+                    user: req.cookies.user,
+                    trip: trip,
+                    host: host,
+                    tripmate: tripmates,
+                    joined: true
+                });
+            } else {
+                // Render to view
+                res.render('trip', {
+                    user: req.cookies.user,
+                    trip: trip,
+                    host: host,
+                    tripmate: tripmates,
+                });
+            }
+
+
         }
         else {
             res.status(404);
@@ -112,12 +127,12 @@ module.exports = {
             }
 
             const tripID = req.params.tripID;
-            
+
             var imgs = [];
             for (let index = 0; index < req.files.img.length; index++) {
-            imgs[index] = `/images/trip/${tripID}/${req.files.img[index].filename}`
+                imgs[index] = `/images/trip/${tripID}/${req.files.img[index].filename}`
 
-        }
+            }
 
             var check_stop_img = false;
             if (req.files.stop_image !== undefined) {

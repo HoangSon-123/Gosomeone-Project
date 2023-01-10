@@ -43,5 +43,8 @@ module.exports = {
         const dd = d.getDate();
 
         return `${dd} ${mmm} ${yy}`
-    }
+    },
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    },
 }

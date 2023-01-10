@@ -65,7 +65,7 @@
                         </div>
                         <div>
                             <i class="fa-solid fa-flag fs-5 text-info"></i>&nbsp;
-                            <span class="text-muted">{{trip.stop}} stops</span>
+                            <span class="text-muted">{{trip.total_stop}} stops</span>
                         </div>
                         <div>
                             <i class="fa-solid fa-user fs-5 text-info"></i>&nbsp;
@@ -73,12 +73,12 @@
                         </div>
                         <div>
                             <i class="fa-solid fa-location-dot fs-5 text-info"></i>&nbsp;
-                            <span class="text-muted">Vietnam</span>
+                            <span class="text-muted">{{trip.location}}</span>
                         </div>
                     </div>
                     <p class="text-content">
-                        <b>Are you ready for a very special vacation?</b><br />
-                        {{trip.description}}
+                        <b>{{trip.short_des}}</b><br />
+                        {{trip.trip_des}}
                     </p>
                     <h6 class="text-uppercase fw-bold">meet your trip leader</h6>
                     <div class="border">
@@ -134,7 +134,7 @@
                                 <div class="location-no">{{no}}</div>
                                 <div class="location-name">
                                     <i class="fa-solid fa-location-dot"></i>&nbsp;
-                                    <span class="fw-bolder fs-5">Địa điểm {{@index}}</span>
+                                    <span class="fw-bolder fs-5">{{location}}</span>
                                 </div>
                             </div>
                             <div class="ps-5 d-flex flex-column gap-3">
@@ -188,23 +188,34 @@
                     <hr class="m-0">
                     <div class="text-primary fw-bold p-3">
                         <i class="fa-regular fa-compass"></i>&nbsp;
+                        {{#if trip.type}}
+                        <span class="fs-7">{{capitalizeFirstLetter trip.type}} trip</span>
+                        {{else}}
                         <span class="fs-7">Guided trip</span>
+                        {{/if}}
                     </div>
                     <hr class="m-0">
                     <div class="p-3 d-flex flex-column gap-3">
                         <div class="d-flex justify-content-between">
                             <span class="fw-bolder">PRICE</span>
                             <div>
-                                <span>1.000.000</span>
+                                <span>{{trip.price}}</span>
                                 <span class="text-success">VND</span>
                             </div>
                         </div>
-                        <button type="button" class="btn-gradient-danger d-block w-100 text-uppercase">Reverse
-                            spot</button>
+                        {{#if joined}}
+                        <button type="button" class="btn-gradient-danger d-block w-100 text-uppercase">
+                            Joined</button>
+                        {{else}}
+                        <form action="/trip/reverse/{{trip._id}}" method="get">
+                            <button type="summit" class="btn-gradient-danger d-block w-100 text-uppercase">
+                                Reverse spot </button>
+                        </form>
+                        {{/if}}
                         <div class="text-danger fs-8 text-center">
                             <i class="fa-solid fa-bolt"></i>&nbsp;
                             <span>3</span>&nbsp;
-                            <span>spot left</span>
+                            <span>spots left</span>
                         </div>
                         {{!-- <button type="button" class="btn-gradient-danger d-block w-100 text-uppercase">payment
                             confirm</button>
