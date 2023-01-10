@@ -5,13 +5,13 @@ const multer = require('multer');
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // Xác định thư mục
-        console.log('imageUpload');
+        
         const userID = req.cookies.user._id;
         var dir = path.join(__dirname, `/../public/images/user/${userID}/`);
-        console.log('1');
+      
         const tripID = req.params.tripID;
         if (tripID !== undefined) {
-            console.log('tao thu muc trip/tripID');
+           
             dir = path.join(__dirname, `/../public/images/trip/${tripID}/`);   
         }
 

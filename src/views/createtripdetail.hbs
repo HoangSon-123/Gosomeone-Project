@@ -92,6 +92,7 @@
                     <h6 class="fs-7 fw-bold">Trip Description</h6>
                     <textarea name="trip_des" class="mb-1" cols="40" rows="10"
                         placeholder="Detail description of the trip"></textarea>
+                    <p class="text-danger" id="errorMessageTripDes"></p>
                     <div class="d-flex justify-content-between">
                         <span class="fs-8 text-secondary">What experiences and places make your trip?</span>
                         <span class="fs-8 text-secondary">Minimum 800 characters</span>
@@ -101,6 +102,7 @@
                     <h6 class="fs-7 fw-bold">Short Description</h6>
                     <textarea name="short_des" col="40" rows="3" class="mb-1"
                         placeholder="Write the snippets of the trip"></textarea>
+                    <p class="text-danger" id="errorMessageShortDes"></p>
                     <div class="d-flex justify-content-between">
                         <span class="fs-8 text-secondary">Content that will be displayed as a snippet on search
                             results page</span>
@@ -222,7 +224,8 @@
                 </div>
                 <div class="d-flex align-items-center gap-3 mb-3">
                     <div class="form-floating flex-fill">
-                        <input name="location" id="input-location-1" type="text" class="input-location form-control" required>
+                        <input name="location" id="input-location-1" type="text" class="input-location form-control"
+                            required>
                         <label>Location</label>
                     </div>
                     <div class="input-day d-flex gap-1 align-items-center">
@@ -347,9 +350,7 @@
 
 <script>
     $('#formDetail').submit(function (e) {
-        console.log(1)
         e.preventDefault();
-        console.log(2)
         const category = $('input[name="category"]:checked').map(function (_, el) {
             return $(el).val();
         });
@@ -359,6 +360,7 @@
         const included = $('input[name="included"]:checked').map(function (_, el) {
             return $(el).val();
         });
+
         if (category.length == 0) {
             return $('#errorMessageCategory').text("Không được để trống")
         } else {
@@ -375,16 +377,26 @@
             $('#errorMessageIncluded').text("")
         }
         const amountImg = document.getElementById("input-trip-imgs").files.length;
-        console.log(3)
         if (amountImg == 0) {
             return $('#errorMessageImg').text("Không được để trống")
         } else {
             $('#errorMessageImg').text("")
         }
-        console.log('validation result')
+
+        const trip_des = $('textarea[name="trip_des"]').val();
+        if (trip_des.length < 800) {
+            return $('#errorMessageTripDes').text("Vui lòng mô tả trên 800 từ")
+        } else {
+            $('#errorMessageTripDes').text("")
+        }
+
+        const short_des = $('textarea[name="short_des"]').val();
+        if (short_des.length > 160) {
+            return $('#errorMessageShortDes').text("Vui lòng mô tả dưới 160 từ")
+        } else {
+            $('#errorMessageShortDes').text("")
+        }
         var formData = new FormData($('#formDetail')[0]);
-
-
         var frm = $('#formDetail');
         $.ajax({
             type: frm.attr('method'),

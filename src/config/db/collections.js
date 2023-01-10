@@ -48,19 +48,7 @@ const userSchema = new mongoose.Schema({
     profile:        profileSchema
 });
 
-const itinerarySchema = new mongoose.Schema({
-    no:     Number,
-    img:    String,
-    content:String,
-    location: String,
-});
 
-const tripIncludeSchema = new mongoose.Schema({
-    accommodation:  Boolean,
-    ticket:         Boolean,
-    transportation: Boolean,
-    food: Boolean,
-});
 
 const tripSchema = new mongoose.Schema({
     title: {
@@ -68,6 +56,8 @@ const tripSchema = new mongoose.Schema({
         required: true
     },
     img:           [String],
+    category: [String],
+    accommodation: [String],
     type: {
         type: String,
         default: "guided"
@@ -97,9 +87,20 @@ const tripSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],
-    stop:           Number,
-    itinerary:      [itinerarySchema],
-    include:        tripIncludeSchema
+    total_stop:           Number,
+    itinerary:      [{
+        _id: false,
+        no:     Number,
+        img:    String,
+        content:String,
+        location: String,
+    }],
+    included:        {
+        accommodation:  Boolean,
+        ticket:         Boolean,
+        transportation: Boolean,
+        food: Boolean,
+    }
 
 });
 

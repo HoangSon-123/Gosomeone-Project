@@ -24,65 +24,6 @@
 </div>
 <!--  -->
 <div class="main">
-    <div class="container-xl m-auto p-0">
-        <div class="d-flex justify-content-between align-items-center pt-4 pb-4">
-            <div class="section-title">Discovery Trips</div>
-            <div class="d-flex">
-                <button class="border ms-2 filter-home" value="featured"><i class="fa-solid fa-fire"></i>&nbsp;
-                    Featured</button>
-                <button class="border ms-2 filter-home" value="lastchances"><i
-                        class="fa-regular fa-hourglass-half"></i>&nbsp; Last Chances</button>
-                <button class="border ms-2 filter-home" value="coworking"><i class="fa-solid fa-wifi"></i>&nbsp;
-                    Coworking</button>
-            </div>
-        </div>
-        <div class="row row-cols-4 g-2">
-            {{#each trips}}
-            <div class="col">
-                <div class="card">
-                    <img class="card-img-top" src={{picture}}>
-                    <div class="card-body">
-                        <div class="destination"><i class="fa-solid fa-location-dot"></i>&nbsp;{{location}}</div>
-                        <a class="card-title">{{name}}</a>
-                        <div class="date">
-                            <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
-                                {{day}} {{month}} {{year}}
-                            </span>
-                            <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; {{time}}</span>
-                        </div>
-                        <hr />
-                        <div class="price d-flex flex-column">
-                            <div>
-                                <span class="cost">{{price}}</span>
-                                <span class="currency">VND</span>
-                            </div>
-
-                            {{!-- PHAN NAY KHONG BIET LAM SAO DE TRUY CAP last_name va first_name cua participants_user --}}
-                            {{#each participants_user}}
-                            {{!-- mang cac object user  --}}
-                            {{!-- run pj de thay duoc kieu cua object --}}
-                            {{!-- {{this}} --}}
-                            <div class="unit">
-                                {{!-- khong get duoc 2 thang nay --}}
-                                {{!-- {{last_name}} {{first_name}} --}}
-                             
-                            </div>
-                            {{/each}}
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-    </div>
-    <!--  -->
-    <div class="pt-5 pb-5 text-center">
-        <div class="mb-1 fw-bold">Haven't found your favorite trips yet?</div>
-        <div class="mb-2">View all of our trips looking for travelers</div>
-        <a class="btn btn-outline-primary" href="/site/trip"><i class="fa-solid fa-magnifying-glass"></i>&nbsp; All
-            trips</a>
-    </div>
     <!-- -->
     <div class="container-xl m-auto mb-5 p-0">
         <div class="pt-4 pb-4">
