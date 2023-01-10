@@ -64,13 +64,10 @@ module.exports = {
     },
     createDetailTrip: async (req, res, next) => {
         try {
-            var total_days = null;
-            if (req.body.total_days.length === 1) {
-                total_days = [req.body.total_days];
-            } else {
-                total_days = req.body.total_days;
-            }
-
+            const location = req.body.location.split(',');
+            const description = req.body.description.split(',');
+            const total_days = req.body.total_days.split(',');
+            
             var sum_total_days = 0;
             for (let index = 0; index < total_days.length; index++) {
                 sum_total_days = sum_total_days + parseInt(total_days[index]);
@@ -90,19 +87,7 @@ module.exports = {
                 accommodation = req.body.accommodation;
             }
 
-            var location = null;
-            if (req.body.location.length === 1) {
-                location = [req.body.location];
-            } else {
-                location = req.body.location;
-            }
-
-            var description = null;
-            if (req.body.description.length === 1) {
-                description = [req.body.description];
-            } else {
-                description = req.body.description;
-            }
+            
 
             var included = null;
             if (req.body.included.length === 1) {
@@ -121,6 +106,7 @@ module.exports = {
             if (req.files.stop_image !== undefined) {
                 check_stop_img = true;
             }
+
             if (check_stop_img) {
 
                 var stop_image = [];
@@ -129,7 +115,7 @@ module.exports = {
 
                 }
             }
-
+          
             const tripID = req.params.tripID;
 
             var tripDB = {};
@@ -150,7 +136,7 @@ module.exports = {
                 if (check_stop_img) {
                     var a = {
                         no: index + 1,
-                        img: stop_image[index].originalname,
+                        img: stop_image[index],
                         location: location[index],
                         content: description[index],
                     }

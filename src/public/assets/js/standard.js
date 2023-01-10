@@ -190,7 +190,7 @@ $(() => {
                         </div>
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div class="form-floating flex-fill">
-                                <input id="input-location-${id}" type="text" class="input-location form-control">
+                                <input name="location" id="input-location-${id}" type="text" class="input-location form-control">
                                 <label>Location</label>
                             </div>
                             <div class="input-day d-flex gap-1 align-items-center">

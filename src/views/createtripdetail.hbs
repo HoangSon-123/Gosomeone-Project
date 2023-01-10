@@ -351,6 +351,25 @@
 <script>
     $('#formDetail').submit(function (e) {
         e.preventDefault();
+
+        const location = document.getElementsByName("location");
+        var list_location=[];
+        for (var i = 0; i < location.length; i++){
+            list_location.push(location[i].value);
+        }
+        
+        const description = document.getElementsByName("description");
+        var list_description=[];
+        for (var i = 0; i < description.length; i++){
+            list_description.push(description[i].value);
+        }
+        const total_days = document.getElementsByName("total_days");
+        var list_total_days=[];
+        for (var i = 0; i < description.length; i++){
+            list_total_days.push(total_days[i].value);
+        }
+        
+
         const category = $('input[name="category"]:checked').map(function (_, el) {
             return $(el).val();
         });
@@ -397,6 +416,9 @@
             $('#errorMessageShortDes').text("")
         }
         var formData = new FormData($('#formDetail')[0]);
+        formData.set('location', list_location);
+        formData.set('description', list_description);
+        formData.set('total_days', list_total_days);
         var frm = $('#formDetail');
         $.ajax({
             type: frm.attr('method'),
