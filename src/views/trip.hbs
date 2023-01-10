@@ -77,8 +77,8 @@
                         </div>
                     </div>
                     <p class="text-content">
-                        <b>Are you ready for a very special vacation?</b><br />
-                        {{trip.description}}
+                        <b>{{trip.short_des}}</b><br />
+                        {{trip.trip_des}}
                     </p>
                     <h6 class="text-uppercase fw-bold">meet your trip leader</h6>
                     <div class="border">
@@ -134,7 +134,7 @@
                                 <div class="location-no">{{no}}</div>
                                 <div class="location-name">
                                     <i class="fa-solid fa-location-dot"></i>&nbsp;
-                                    <span class="fw-bolder fs-5">Địa điểm {{@index}}</span>
+                                    <span class="fw-bolder fs-5">{{location}}</span>
                                 </div>
                             </div>
                             <div class="ps-5 d-flex flex-column gap-3">

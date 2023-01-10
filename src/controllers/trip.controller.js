@@ -113,22 +113,25 @@ module.exports = {
             const tripID = req.params.tripID;
             const tripDB = await tripM.select("_id", tripID);
             console.log(tripDB);
-            tripDB.imgs = imgs;
+            tripDB.img = [];    
+            for (let i = 0; i < req.files.img.length; i++) {  
+                tripDB.img[i] = `/images/trip/${tripID}/img_${req.files.img[i].originalname}`
+            }
             tripDB.type = req.body.type;
             tripDB.duration = sum_total_days;
             tripDB.location = "Vietnam";
             tripDB.price = parseInt(req.body.price);
             tripDB.category = category;
             tripDB.accommodation = accommodation;
-            tripDB.tripdescription = req.body.trip_des;
-            tripDB.shortdescription = req.body.short_des;
+            tripDB.trip_des = req.body.trip_des;
+            tripDB.short_des = req.body.short_des;
             tripDB.total_tripmates = req.body.total_tripmates;
             tripDB.total_stop = req.body.total_days.length;
             console.log(tripDB);
             for (let index = 0; index < req.body.total_days.length; index++) {
                 tripDB.itinerary[index] = {
                     no: index + 1,
-                    img: req.files.stop_image[index].originalname,
+                    img: `/images/trip/${tripID}/stop_image_${req.files.stop_image[index].originalname}`,
                     location: location[index],
                     content: description[index],
                     //chỗ này nó tự thêm 1 field _id nữa nè
@@ -156,7 +159,7 @@ module.exports = {
                 }
             }
             console.log(tripDB);
-           // await tripM.update("_id",tripID,tripDB)
+            await tripM.update("_id",tripID,tripDB)
             res.render('home')
         } catch (error) {
             next(error);
