@@ -17,7 +17,7 @@ mongoose.connect((process.env.MONGODB_URL), () => {
 });
 
 const siteR=require('./routers/site.router');
-const tripR=require('./routers/tripSite.router');
+const tripR=require('./routers/trip.router');
 
 
 const app = express();

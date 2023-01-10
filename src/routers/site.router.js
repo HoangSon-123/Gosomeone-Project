@@ -4,8 +4,6 @@ const router = app.Router();
 const { imageUpload }  = require('../config/imageUpload')
 const siteC = require('../controllers/site.controller')
 
-const tripSiteR = require('./tripSite.router')
-
 router.get('/logging', (req, res) => {
     res.render('login');
 });
@@ -42,7 +40,5 @@ router.get('/personal-info', (req, res) => {
 
 router.post('/personal-info', siteC.editPersonalInfo);
 
-// http://127.0.0.1:3000/site/trip/... => Go to trip site router
-router.use('/trip', tripSiteR);
 
 module.exports = router;
