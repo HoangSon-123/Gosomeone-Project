@@ -1,6 +1,7 @@
 //demo
 const tripM = require('../models/trip.model')
-const siteM = require('../models/site.model')
+const siteM = require('../models/site.model');
+const joinTripM = require('../models/joinTrip.model');
 
 
 module.exports = {
@@ -30,26 +31,47 @@ module.exports = {
                 tripmates.push(tmp);
             }
 
-            // Check if user joined the trip
-            const userID = req.cookies.user._id
-            if (trip.host == userID || trip.tripmates.includes(userID)) {
-                // Render to view
-                res.render('trip', {
-                    user: req.cookies.user,
-                    trip: trip,
-                    host: host,
-                    tripmate: tripmates,
-                    joined: true
-                });
-            } else {
-                // Render to view
-                res.render('trip', {
-                    user: req.cookies.user,
-                    trip: trip,
-                    host: host,
-                    tripmate: tripmates,
-                });
+            // Data to render
+            var renderData = {
+                user: req.cookies.user,
+                trip: trip,
+                host: host,
+                tripmate: tripmates
             }
+
+            if (req.cookies.user) {
+                const userID = req.cookies.user._id
+                
+                if (trip.host == userID) {
+                    renderData.author = true;
+                }
+                else {
+                    var joined = trip.tripmates.find(function (element) {
+                        return element == userID;
+                    });
+                    
+                    var confirming = await joinTripM.find({
+                        user_id: userID, 
+                        trip_id: req.params.id,
+                        $or: [{ state: "confirming" }, { state: "requesting" }]
+                    })
+
+                    if (joined) {
+                        renderData.joined = true;
+                    } else if (confirming.length !== 0) {
+                        renderData.confirming = true;
+                    } else {
+                        renderData.guest = true;
+                    }
+                }
+            }
+            else {
+                renderData.guest = true;
+            }
+
+
+            // Render to view
+            res.render('trip', renderData);
 
 
         }
@@ -82,7 +104,7 @@ module.exports = {
             const location = req.body.location.split(',');
             const description = req.body.description.split(',');
             const total_days = req.body.total_days.split(',');
-            
+
             var sum_total_days = 0;
             for (let index = 0; index < total_days.length; index++) {
                 sum_total_days = sum_total_days + parseInt(total_days[index]);
@@ -102,7 +124,7 @@ module.exports = {
                 accommodation = req.body.accommodation;
             }
 
-            
+
 
             var included = null;
             if (req.body.included.length === 1) {

@@ -34,6 +34,16 @@ const getOne = async (tableName, fieldName, fieldValue) => {
     }
 }
 
+const find = async (tableName, filter) => {
+    try {
+        Model = mongoose.model(tableName);
+        const result = await Model.find(filter);
+        return result;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 const updateOne = async (tableName, fieldName, fieldValue, newEntity) => {
     try {
         Model = mongoose.model(tableName);
@@ -79,6 +89,6 @@ const getOneLean = async (tableName, fieldName, fieldValue) => {
 
 
 module.exports = {
-    add, getAll, getOne, updateOne, deleteOne,
+    add, getAll, getOne, find, updateOne, deleteOne,
     getAllLean, getOneLean
 }

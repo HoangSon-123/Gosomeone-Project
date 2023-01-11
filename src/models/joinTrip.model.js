@@ -21,5 +21,9 @@ module.exports = {
     select: async (fieldName,fieldValue) => {
         const rs = await db.getOne(tableName, fieldName, fieldValue);
         return rs;
-    }
+    },
+    find: async (filter) => {
+        const rs = await db.find(tableName, filter);
+        return rs;
+    },
 };
