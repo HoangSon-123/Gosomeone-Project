@@ -179,6 +179,27 @@
     object-fit: cover
 }
 
+.user {
+    display: flex;
+    gap: 10px;
+}
+
+.user .name {
+    font-weight: bold;
+}
+
+.user a {
+    font-size: 13px;
+    font-style: italic;
+}
+
+.user img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .user-menu .user {
     display: flex;
     gap: 10px;

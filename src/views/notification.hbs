@@ -1,0 +1,36 @@
+<div class="container-fluid wrapper" style="background-color: #f8f4f4;">
+    <div id="my-trip" class="container-lg p-0 my-5">
+        <h4 class="fw-bold mb-4">Notifications</h4>
+        <div class="d-flex flex-column gap-1 w-100">
+            {{#each notification}}
+            {{#if request}}
+            <div class="rounded-1 bg-light shadow-sm">
+                <div class="d-flex p-2 gap-3 align-items-center">
+                    <a class="d-block" href="/user-profile/{{user._id}}">
+                        <div class="user d-flex align-items-center border-end border-1 pe-3">
+                            <img class="d-block" src="{{user.profile.ava}}">
+                            <h6 class="name text-dark m-0">{{user.first_name}}</h6>
+                        </div>
+                    </a>
+                    <a href="/trip/show/{{trip_id}}">
+                        <h6 class="fs-8 text-muted m-0">
+                            Requested to join your trip, please go to your trip and respond to this
+                            request.
+                        </h6>
+                    </a>
+                </div>
+            </div>
+            {{/if}}
+            {{#if response}}
+            <div class="rounded-1 bg-light shadow-sm p-3">
+                <h6 class="fs-8 text-muted m-0">
+                    <span>Your request to join <a class="text-dark fw-semibold" href="/trip/show/{{trip._id}}">{{trip.title}}</a>
+                        was {{result}} by the host.
+                    </span>
+                </h6>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>
