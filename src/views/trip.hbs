@@ -203,22 +203,49 @@
                                 <span class="text-success">VND</span>
                             </div>
                         </div>
-                        {{#if joined}}
-                        <button type="button" class="btn-gradient-danger d-block w-100 text-uppercase">
-                            Joined</button>
-                        {{else}}
-                        <form action="/trip/reverse/{{trip._id}}" method="get">
-                            <button type="summit" class="btn-gradient-danger d-block w-100 text-uppercase">
-                                Reverse spot </button>
-                        </form>
-                        {{/if}}
-                        <div class="text-danger fs-8 text-center">
-                            <i class="fa-solid fa-bolt"></i>&nbsp;
-                            <span>3</span>&nbsp;
-                            <span>spots left</span>
+                        {{#if author}}
+                        <div class="d-flex justify-content-between">
+                                <span class="fw-bolder">SPOT LEFT</span>
+                                <span class="text-info fw-bold fs-5">{{spot_left}}</span>
+                            </div>
                         </div>
-                        {{!-- <button type="button" class="btn-gradient-danger d-block w-100 text-uppercase">payment
-                            confirm</button>
+                        <hr class="m-0">
+                        <div class="p-3 bg-danger bg-opacity-25">
+                            <h5 class="fw-bolder text-center">REQUESTS</h5>
+                        </div>
+                        <!-- Cac yeu cau xet duyet, truy vấn trong jointrip với trip_id, state="request" -->
+                        <div class="request p-3 d-flex flex-column gap-3">
+                            {{#each request}}
+                            <div class="d-flex flex-wrap justify-content-between">
+                                <a href="userprofile/{{user._id}}">
+                                    <div class="user align-items-center">
+                                        <img src="{{user.ava}}">
+                                        <span class="name text-dark">{{user.first_name}}</span>
+                                    </div>
+                                </a>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button id="accept-btn" class="btn-gradient-info btn-sm px-2" data-value="{{user._id}}">Accept</button>
+                                    <button id="deny-btn" class="btn-gradient-danger btn-sm px-2" data-value="{{user._id}}">Deny</button>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                            {{else}}
+                        {{#if confirming}}
+                        <a href="/payment" id="{{user._id}}" class="btn btn-gradient-danger d-block w-100 text-uppercase">payment
+                            confirm</a>
+                        <div class="d-flex gap-2 w-100 justify-content-end">
+                            <button class="fs-8 text-secondary text-uppercase d-block">
+                                <i class="fa-solid fa-message"></i> Chat
+                            </button>
+                            <button class="fs-8 text-secondary text-uppercase">
+                                <i class="fa-solid fa-heart-crack"></i> cancel
+                            </button>
+                        </div>
+                        {{/if}}
+                        {{#if joined}}
                         <button type="button" class="btn-gradient-info d-block w-100 text-uppercase">JOINED</button>
                         <div class="d-flex gap-2 w-100 justify-content-end">
                             <button class="fs-8 text-secondary text-uppercase d-block">
@@ -227,7 +254,19 @@
                             <button class="fs-8 text-secondary text-uppercase">
                                 <i class="fa-solid fa-heart-crack"></i> cancel
                             </button>
-                        </div> --}}
+                        </div>
+                        {{/if}}
+                        {{#if guest}}
+                        <form action="/trip/reverse/{{trip._id}}" method="get">
+                            <button type="summit" class="btn-gradient-danger d-block w-100 text-uppercase">
+                                Reverse spot </button>
+                        </form>
+                        <div class="text-danger fs-8 text-center">
+                            <i class="fa-solid fa-bolt"></i>&nbsp;
+                            <span>{{trip.spot_left}}</span>&nbsp;
+                            <span>spot left</span>
+                        </div>
+                        {{/if}}
                     </div>
                     <hr class="m-0">
                     <div class="p-3 text-secondary fs-7">
@@ -238,7 +277,7 @@
                         </span>
                     </div>
                 </div>
+                {{/if}}
             </div>
         </div>
     </div>
-</div>
