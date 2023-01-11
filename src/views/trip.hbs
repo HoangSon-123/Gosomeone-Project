@@ -1,5 +1,5 @@
 <div class="trip mb-4">
-    <div class="container-fluid p-0">
+    {{!-- <div class="container-fluid p-0">
         <div id="trip-imgs" class="carousel slide" data-bs-ride="carousel">
             <div class="d-flex bg-dark">
                 <div id="prev-item" class="flex-fill"
@@ -36,10 +36,10 @@
             <button type="button" class="btn-close btn-close-white" aria-label="Close"
                 data-bs-target="#view-profile-img"></button>
         </div>
-    </div>
+    </div> --}}
     <div class="container-xl p-0">
         <div class="row m-0 gx-4">
-            <div class="col-8">
+            {{!-- <div class="col-8">
                 <div class="d-flex flex-column gap-4">
                     <h3 class="fw-bolder">{{trip.title}}</h3>
                     <div class="d-flex align-items-center gap-2">
@@ -175,17 +175,17 @@
                         <i class="fa-regular fa-font-awesome"></i>&nbsp;REPORT TRIP
                     </span>
                 </div>
-            </div>
+            </div> --}}
             <!-- booking -->
             <div class="col-4">
                 <div class="border rounded-1">
-                    <div class="text-secondary p-3">
+                    {{!-- <div class="text-secondary p-3">
                         <i class="fa-regular fa-calendar"></i>&nbsp;
                         <span>{{shortDate trip.dep_date}}</span>&nbsp;
                         <i class="fa-solid fa-arrow-right"></i>&nbsp;
                         <span>{{endDate_short trip.dep_date trip.duration}}</span>
                     </div>
-                    <hr class="m-0">
+                    <hr class="m-0"> --}}
                     <div class="text-primary fw-bold p-3">
                         <i class="fa-regular fa-compass"></i>&nbsp;
                         <span class="fs-7">Guided trip</span>
@@ -195,32 +195,31 @@
                         <div class="d-flex justify-content-between">
                             <span class="fw-bolder">PRICE</span>
                             <div>
-                                <span>1.000.000</span>
+                                <span>{{trip.price}}</span>
                                 <span class="text-success">VND</span>
                             </div>
                         </div>
+                        {{!-- to do --}}
                         {{#if author}}
                         <div class="d-flex justify-content-between">
-                                <span class="fw-bolder">JOINED</span>
-                                <span class="text-info fw-bold fs-5">{{joined}}</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <span class="fw-bolder">CONFIRMING</span>
-                                <span class="text-info fw-bold fs-5">{{confirming}}</span>
+                                <span class="fw-bolder">SPOT LEFT</span>
+                                <span class="text-info fw-bold fs-5">{{spot_left}}</span>
                             </div>
                         </div>
                         <hr class="m-0">
                         <div class="p-3 bg-danger bg-opacity-25">
                             <h5 class="fw-bolder text-center">REQUESTS</h5>
                         </div>
-                        <!-- Cac yeu cau xet duyet -->
+                        <!-- Cac yeu cau xet duyet, truy vấn trong jointrip với trip_id, state="request" -->
                         <div class="request p-3 d-flex flex-column gap-3">
                             {{#each request}}
                             <div class="d-flex flex-wrap justify-content-between">
-                                <div class="user align-items-center">
-                                    <img src="./assets/user.png">
-                                    <span class="name">{{user.first_name}}</span>
-                                </div>
+                                <a href="userprofile/{{user._id}}">
+                                    <div class="user align-items-center">
+                                        <img src="{{user.ava}}">
+                                        <span class="name text-dark">{{user.first_name}}</span>
+                                    </div>
+                                </a>
                                 <div class="d-flex gap-2 align-items-center">
                                     <button id="accept-btn" class="btn-gradient-info btn-sm px-2" data-value="{{user._id}}">Accept</button>
                                     <button id="deny-btn" class="btn-gradient-danger btn-sm px-2" data-value="{{user._id}}">Deny</button>
@@ -230,10 +229,10 @@
                         </div>
                     </div>
                 </div>
-                {{else}}
+                            {{else}}
                         {{#if confirming}}
-                        <button type="button" class="btn-gradient-danger d-block w-100 text-uppercase">payment
-                            confirm</button>
+                        <a href="/payment" id="{{user._id}}" class="btn btn-gradient-danger d-block w-100 text-uppercase">payment
+                            confirm</a>
                         <div class="d-flex gap-2 w-100 justify-content-end">
                             <button class="fs-8 text-secondary text-uppercase d-block">
                                 <i class="fa-solid fa-message"></i> Chat
