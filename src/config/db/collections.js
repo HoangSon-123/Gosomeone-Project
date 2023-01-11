@@ -45,7 +45,24 @@ const userSchema = new mongoose.Schema({
     phone_number:   String,
     user_id:        String,
     verification:   verificationSchema,
-    profile:        profileSchema
+    profile:        profileSchema,
+    notification: [
+        {
+            _id: false,
+            type: {
+                type: String,
+                enum: ['request', 'response']
+            },
+            trip_id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Trip"
+            },
+            result: {
+                type: String,
+                enum: ['', 'accepted']
+            },
+        }
+    ]
 });
 
 
@@ -104,7 +121,23 @@ const tripSchema = new mongoose.Schema({
 
 });
 
+const joinTripSchema = new mongoose.Schema({
+    user_id: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
+    trip_id: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Trip"
+    }],
+    state: {
+        type: String,
+        enum: ['confirming', 'requesting', 'joined', 'finished']
+    },
+})
+
 let User = mongoose.model("User", userSchema, "user");
 let Trip = mongoose.model("Trip", tripSchema, "trip");
+let joinTrip = mongoose.model("joinTrip", joinTripSchema, "joinTrip");
 
-module.exports = { User, Trip };
+module.exports = { User, Trip, joinTrip };
