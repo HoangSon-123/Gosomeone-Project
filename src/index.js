@@ -18,6 +18,7 @@ mongoose.connect((process.env.MONGODB_URL), () => {
 
 const siteR=require('./routers/site.router');
 const tripR=require('./routers/tripSite.router');
+const profileR=require('./routers/profile.router');
 
 
 const app = express();
@@ -43,6 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use('/site',siteR);
 app.use('/trip',tripR)
+app.use('/profile',profileR)
 
 app.get('/', (req, res) => {
     if (req.cookies.token) {

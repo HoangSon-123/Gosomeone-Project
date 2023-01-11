@@ -1,17 +1,18 @@
 <div class="container-fluid cover-image d-flex align-items-center justify-content-center">
-    <img id="cover-img">
+    <img id="cover-img" 
+    {{#if userShowing}} src="{{userShowing.profile.ava}}" {{else}} src="/assets/images/user.png" {{/if}}>
 </div>
 <div class="container-md p-0 ms-auto me-auto mb-5">
     <div class="profile">
         <div class="profile-user mb-5">
-            {{#if user}}
-            <img class="border-white viewable-img" class="d-block" src="{{user.ava}}">
+            {{#if userShowing}}
+            <img class="border-white viewable-img" class="d-block" src="{{userShowing.profile.ava}}">
             {{else}}
             <img class="border-white viewable-img" class="d-block" src="/assets/images/user.png">
             {{/if}}
             <div>
-                <div class="fw-bolder fs-3">Waldez Thai</div>
-                <span class="text-secondary">Hi I'm Hien Thai abc...</span>
+                <div class="fw-bolder fs-3">{{userShowing.first_name}} {{userShowing.last_name}}</div>
+                <span class="text-secondary">Hi I'm {{userShowing.first_name}} {{userShowing.last_name}}...</span>
             </div>
         </div>
         <div class="row row-cols-4 g-2 mb-5">
@@ -38,10 +39,9 @@
 
         <div class="mb-5">
             <div class="profile-imgs d-flex flex-wrap gap-2">
-                <img class="viewable-img"
-                    src="https://photo-cms-plo.epicdn.me/w850/Uploaded/2022/vocgmvbg/2022_08_14/phuong-nhi-739.jpeg">
-                <img class="viewable-img"
-                    src="https://photo-cms-plo.epicdn.me/w850/Uploaded/2022/vocgmvbg/2022_08_14/phuong-nhi-739.jpeg">
+                {{#each userShowing.profile.imgs}}
+                <img class="viewable-img" src="{{ this }}">
+                {{/each}}
             </div>
         </div>
 
@@ -56,9 +56,7 @@
         <!-- Profile description -->
         <div class="mb-5">
             <p class="fs-8 mb-4">
-                Description description description description description description ha ah ha
-                description description description description description description description
-                description description description description
+                {{userShowing.profile.description}}
             </p>
             <div class="accordion">
                 <div id='addition-questions' class="mt-4 mb-4 accordion-collapse collapse">
@@ -68,8 +66,7 @@
                                 <span class="fw-bold fs-7">What have you been doing in the past?</span>
                             </div>
                             <p class=" fs-8">
-                                abc abc abc abc abc abc abc abc abc abc abc abc abc
-                                abc abc abc abc abc
+                                {{userShowing.profile.q1}}
                             </p>
                         </div>
                         <div class="col">
@@ -77,8 +74,7 @@
                                 <span class="fw-bold fs-7">What kind of person you are?</span>
                             </div>
                             <p class=" fs-8">
-                                abc abc abc abc abc abc abc abc abc abc abc abc abc
-                                abc abc abc abc abc
+                                {{userShowing.profile.q2}}
                             </p>
                         </div>
                     </div>
@@ -88,8 +84,7 @@
                                 <span class="fw-bold fs-7">What is your favorite?</span>
                             </div>
                             <p class=" fs-8">
-                                abc abc abc abc abc abc abc abc abc abc abc abc abc
-                                abc abc abc abc abc
+                                {{userShowing.profile.q3}}
                             </p>
                         </div>
                         <div class="col">
@@ -97,8 +92,7 @@
                                 <span class="fw-bold fs-7">Your Travel Experience?</span>
                             </div>
                             <p class=" fs-8">
-                                abc abc abc abc abc abc abc abc abc abc abc abc abc
-                                abc abc abc abc abc
+                                {{userShowing.profile.q4}}
                             </p>
                         </div>
                     </div>
@@ -109,6 +103,7 @@
                 </button>
             </div>
         </div>
+        <!--
         <h5 class="fw-bold mb-3">Joined trips</h5>
         <div class="row row-cols-3 g-1">
             <div class="col">
@@ -136,5 +131,6 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </div>
