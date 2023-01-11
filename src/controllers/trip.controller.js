@@ -31,6 +31,9 @@ module.exports = {
                 tripmates.push(tmp);
             }
 
+            // Calc spots left
+            trip.spot_left = trip.total_tripmates - trip.tripmates.length
+
             // Data to render
             var renderData = {
                 user: req.cookies.user,
