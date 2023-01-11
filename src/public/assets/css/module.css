@@ -637,6 +637,15 @@ body.modal-open {
     object-fit: cover;
 }
 
+.request .user img {
+    height: 40px;
+    width: 40px;
+}
+
+.request button {
+    height: 2em;
+}
+
 /* all trips */
 
 .bg-white {
