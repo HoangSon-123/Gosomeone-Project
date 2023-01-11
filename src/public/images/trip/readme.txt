@@ -1,0 +1,1 @@
+Là thư mục chứa hình ảnh chuyến đi
