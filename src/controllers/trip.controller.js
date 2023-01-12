@@ -56,14 +56,23 @@ module.exports = {
                     var confirming = await joinTripM.find({
                         user_id: userID, 
                         trip_id: req.params.id,
-                        $or: [{ state: "confirming" }, { state: "requesting" }]
-                    })
+                        state: "confirming"
+                    });
+
+                    var requesting = await joinTripM.find({
+                        user_id: userID, 
+                        trip_id: req.params.id,
+                        state: "requesting"
+                    });
 
                     if (joined) {
                         renderData.joined = true;
-                    } else if (confirming.length !== 0) {
+                    } else if (confirming) {
                         renderData.confirming = true;
-                    } else {
+                    } else if (requesting) {
+                        renderData.requesting = true;
+                    }                   
+                    else {
                         renderData.guest = true;
                     }
                 }
