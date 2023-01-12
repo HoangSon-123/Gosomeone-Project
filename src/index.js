@@ -45,14 +45,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/site',siteR);
 app.use('/trip',tripR)
 app.use('/profile',profileR)
+//
+const tripM = require('./models/trip.model')
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    var trips = await tripM.allLean();
+    trips=trips.slice(0,8)
     if (req.cookies.token) {
         res.render('home', {
-            user: req.cookies.user
+            user: req.cookies.user,
+            trip: trips
         });
     }else {
-        res.render('home');
+        res.render('home',{
+            trip: trips
+        });
     }
    
 });
