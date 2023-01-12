@@ -23,5 +23,10 @@ router.post('/:tripID/createdetail', epUpload, tripC.createDetailTrip)
 
 router.get('/show/all', tripC.showAllTrips);
 router.get('/show/:id', tripC.showATrip);
-
+//
+router.get('/show/:id/reverse', tripC.reverse)
+router.get('/show/:id/payment', tripC.payment)
+router.get('/show/:id/accept/:user_id', tripC.accept)
+router.get('/show/:id/deny/:user_id', tripC.deny)
+//
 module.exports = router;

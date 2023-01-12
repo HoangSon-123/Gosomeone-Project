@@ -217,6 +217,96 @@ module.exports = {
         } catch (error) {
             next(error);
         }
-    }
+    },
+    reverse: async (req, res, next) => {
+        try {
+            const userID = req.cookies.user._id;
+            const tripID = req.params.id;
+            const request = {
+                user_id: userID,
+                trip_id: tripID,
+                state: "requesting",
+            }
+            const addRs = await joinTripM.add(request);
+            const tripDB = await tripM.select("_id", tripID);
+            const host = await siteM.select("_id", tripDB.host);
+            const length = host.notification.length;
+            host.notification[length] = {
+                type: "request",
+                trip_id: tripID,
+                result: "",
+            }
+            const rs = await siteM.update("_id", host._id, host)
+
+            res.redirect('/');
+        } catch (error) {
+            next(error);
+        }
+
+    },
+    //payment chua xong
+    payment: async (req, res, next) => {
+        try {
+            const userID = req.cookies.user._id;
+            const tripID = req.params.id;
+            //chon 2 field user_id and trip_id
+            const joinTrip = await joinM.select("")
+        } catch (error) {
+            next(error);
+        }
+    },
+    accept: async (req, res, next) => {
+        try {
+            const userID = req.params.user_id;
+            const tripID = req.params.id;
+            const hostID=req.cookies.user._id;
+
+            const userDB = await siteM.select("_id", userID);
+            const length = userDB.notification.length;
+            userDB.notification[length] = {
+                type: "request",
+                trip_id: tripID,
+                result: "accepted",
+            }
+            const rs = await siteM.update("_id", userDB._id, userDB)
+
+
+            //chon 2 field user_id and trip_id de lay ra joihtrip roi cap nhat state = confirming
+            const joinTrip = await joinM.select("")
+
+            //reload lai trang hien tai, redirect lai duong dan de mo trang nay
+            res.redirect();
+                
+        } catch (error) {
+            next(error);
+        }
+    },
+    deny: async (req, res, next) => {
+        try {
+            //nua sua tuong tu accept 
+            const userID = req.params.user_id;
+            const tripID = req.params.id;
+            const hostID=req.cookies.user._id;
+
+            const userDB = await siteM.select("_id", userID);
+            const length = userDB.notification.length;
+            userDB.notification[length] = {
+                type: "request",
+                trip_id: tripID,
+                result: "accepted",
+            }
+            const rs = await siteM.update("_id", userDB._id, userDB)
+
+
+            //chon 2 field user_id and trip_id de lay ra joihtrip roi cap nhat state = confirming
+            const joinTrip = await joinM.select("")
+
+            //reload lai trang hien tai, redirect lai duong dan de mo trang nay
+            res.redirect();
+                
+        } catch (error) {
+            next(error);
+        }
+    },
 
 }
