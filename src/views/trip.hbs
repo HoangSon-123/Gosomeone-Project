@@ -225,14 +225,12 @@
                             <div class="d-flex gap-2 align-items-center">
                                 <form action="/trip/show/{{trip._id}}/accept/{{user._id}}" method="get">
                                     <button type="summit" id="accept-btn" class="btn-gradient-info btn-sm px-2"
-                                    data-value="{{user._id}}">Accept</button>
+                                        data-value="{{user._id}}">Accept</button>
                                 </form>
                                 <form action="/trip/show/{{trip._id}}/deny/{{user._id}}" method="get">
                                     <button type="summit" id="deny-btn" class="btn-gradient-danger btn-sm px-2"
-                                    data-value="{{user._id}}">Deny</button>
+                                        data-value="{{user._id}}">Deny</button>
                                 </form>
-                                
-                                
                             </div>
                         </div>
                         {{/each}}
@@ -240,6 +238,17 @@
                 </div>
             </div>
             {{else}}
+            {{#if requesting}}
+            <button type="button" class="btn-gradient-info d-block w-100 text-uppercase">PENDING</button>
+            <div class="d-flex gap-2 w-100 justify-content-end">
+                <button class="fs-8 text-secondary text-uppercase d-block">
+                    <i class="fa-solid fa-message"></i> Chat
+                </button>
+                <button class="fs-8 text-secondary text-uppercase">
+                    <i class="fa-solid fa-heart-crack"></i> cancel
+                </button>
+            </div>
+            {{/if}}
             {{#if confirming}}
             <a href="/trip/show/{{trip._id}}/payment" id="{{user._id}}"
                 class="btn btn-gradient-danger d-block w-100 text-uppercase">payment
