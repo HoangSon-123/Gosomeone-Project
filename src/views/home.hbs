@@ -24,6 +24,54 @@
 </div>
 <!--  -->
 <div class="main">
+    <div class="container-xl m-auto p-0">
+        <div class="d-flex justify-content-between align-items-center pt-4 pb-4">
+            <div class="section-title">Discovery Trips</div>
+            <div class="d-flex">
+                <button class="border ms-2 filter-home" value="featured"><i class="fa-solid fa-fire"></i>&nbsp;
+                    Featured</button>
+                <button class="border ms-2 filter-home" value="lastchances"><i
+                        class="fa-regular fa-hourglass-half"></i>&nbsp; Last Chances</button>
+                <button class="border ms-2 filter-home" value="coworking"><i class="fa-solid fa-wifi"></i>&nbsp;
+                    Coworking</button>
+            </div>
+        </div>
+        <div class="row row-cols-4 g-2">
+            {{#each trip}}
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" {{#if img}}src="{{img.[0]}}"
+                        {{else}}src="https://qbtravel.vn/wp-content/uploads/2021/06/hang-son-doong-11.jpg" {{/if}}>
+                    <div class="card-body">
+                        <div class="destination"><i class="fa-solid fa-location-dot"></i>&nbsp;{{location}}
+                        </div>
+                        <a class="card-title" href="/trip/show/{{_id}}">{{title}}</a>
+                        <div class="date">
+                            <span class="me-2"><i class="fa-regular fa-calendar-days"></i>&nbsp;
+                                {{shortDate dep_date}}</span>
+                            <span class="me-2"><i class="fa-regular fa-clock"></i>&nbsp; {{duration}} Days</span>
+                        </div>
+                        <hr />
+                        <div class="price d-flex flex-column">
+                            <div>
+                                <span class="cost">{{price}}</span>
+                                <span class="currency">VND</span>
+                            </div>
+                            <div class="unit">per tripmate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <!--  -->
+    <div class="pt-5 pb-5 text-center">
+        <div class="mb-1 fw-bold">Haven't found your favorite trips yet?</div>
+        <div class="mb-2">View all of our trips looking for travelers</div>
+        <a class="btn btn-outline-primary" href="/show/all"><i class="fa-solid fa-magnifying-glass"></i>&nbsp; All
+            trips</a>
+    </div>
     <!-- -->
     <div class="container-xl m-auto mb-5 p-0">
         <div class="pt-4 pb-4">
